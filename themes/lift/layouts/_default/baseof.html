@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	{{/* Head */}}
+	{{- partial "head.html" . -}}
+	
+	<body>
+		<div class="page page--{{ .Page.Params.slug }}">
+
+			{{/* Header */}}
+			{{- partial "header.html" . -}}
+
+			{{/* Main */}}
+			<main class="main">
+				{{- block "main" . }}{{- end }}
+			</main>
+
+			{{/* Footer */}}
+			{{- partial "footer.html" . -}}
+
+			{{/* Scripts */}}
+			{{- block "scripts" . }}{{- end }}
+
+		</div>
+	</body>
+</html>

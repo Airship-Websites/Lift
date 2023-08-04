@@ -1,0 +1,14 @@
+{{ with .Site.Data.company.social }}
+<ul class="social">
+	{{ range $key, $value := . }}
+	<li>
+		<a href="{{ $value }}" title="{{ $key | title }}">
+
+			{{/* Icon */}}
+			{{- partial "icon.html" $key -}}
+
+		</a>
+	</li>
+	{{ end }}
+</ul>
+{{ end }}

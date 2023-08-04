@@ -1,0 +1,750 @@
+/**
+ * PostCSS mixins imported into stylesheets.
+ *
+ * @package Blueprint
+ * @author  Clay Teller
+ */
+
+/*--------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+# TYPOGRAPHY
+# Title
+# Heading
+# Text
+
+# COMPONENTS
+# Border
+# Box
+# Button
+# Form
+# Frame
+# Link
+# Nav
+# Notice
+# Popup
+# Section
+
+# LAYOUT
+# Bottom space fix
+# Center child
+# Floats contain
+# Flexbox
+# Full width
+# Grid
+
+# MISC
+# Background image color overlay
+# Hide icon text
+# Image replacement
+# Screen reader text
+# Reset properties
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# TYPOGRAPHY
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Title
+--------------------------------------------------------------*/
+
+@mixin title {
+	color: $c-title;
+	font-family: $ff-heading;
+	font-size: $fz-h1;
+	font-weight: $fw-heading;
+	margin-bottom: 0;
+	text-shadow: $tsh;
+}
+
+/*--------------------------------------------------------------
+# Heading
+--------------------------------------------------------------*/
+
+@mixin heading( $level ) {
+	color: $c-heading;
+	font-family: $ff-heading;
+	font-weight: $fw-heading;
+	line-height: $lh-heading;
+	margin-bottom: $space-heading;
+	margin-top: 0;
+
+	@if $level == h1 {
+		font-size: $fz-h1;
+	}
+
+	@if $level == h2 {
+		font-size: $fz-h2;
+	}
+
+	@if $level == h3 {
+		font-size: $fz-h3;
+	}
+
+	@if $level == h4 {
+		font-size: $fz-h4;
+	}
+
+	@if $level == h5 {
+		font-size: $fz-h5;
+	}
+
+	a {
+		color: $c-heading;
+		text-decoration: none;
+	}
+}
+
+/*--------------------------------------------------------------
+# Text
+--------------------------------------------------------------*/
+
+@mixin text-large {
+	font-size: $fz-large;
+	line-height: $lh-large;
+	margin-bottom: 1.2em;
+}
+
+/*--------------------------------------------------------------
+# COMPONENTS
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Border
+--------------------------------------------------------------*/
+
+@mixin border-top( $margin-adjust: 0rem, $padding-adjust: 0rem ) {
+	border-top: 1px solid $c-border;
+	margin-top: calc( $space-border + $margin-adjust );
+	padding-top: calc( $space-border + $padding-adjust );
+}
+
+@mixin border-bottom( $padding-adjust: 0rem ) {
+	border-bottom: 1px solid $c-border;
+	padding-bottom: calc( $space-border + $padding-adjust );
+}
+
+/*--------------------------------------------------------------
+# Box
+--------------------------------------------------------------*/
+
+@mixin box( $bg: false ) {
+	@if $bg {
+		background-color: $bg;
+	} @else {
+		background-color: $bg-box;
+	}
+
+	padding: $p-box;
+}
+
+@mixin box-border( $bd: false ) {
+	@include box( transparent );
+
+	@if $bd {
+		border: 1px solid $bd;
+	} @else {
+		border: 1px solid $c-border;
+	}
+}
+
+/*--------------------------------------------------------------
+# Button
+--------------------------------------------------------------*/
+
+@mixin button( $bg: false, $bg-hover: false ) {
+	@if $bg {
+		background: $bg;
+	} @else {
+		background-color: $bg-button;
+		background-image: linear-gradient( $bg-button-gradient-transparent, $bg-button-gradient );
+	}
+
+	border-radius: $bdrs-button;
+	border: 0;
+	box-shadow: none;
+	color: $c-button;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $ff-heading;
+	font-size: $fz-button;
+	font-weight: $fw-heading;
+	line-height: $lh-button;
+	padding: $p-button;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: $tsh;
+	text-transform: uppercase;
+	white-space: nowrap;
+	width: auto;
+
+	&:hover,
+	&:focus,
+	&:active {
+		@if $bg-hover {
+			background: $bg-hover;
+		} @else {
+			background-color: $bg-button-hover;
+		}
+
+		color: $c-white;
+	}
+}
+
+@mixin button-outline( $color: false ) {
+	background: transparent;
+
+	@if $color {
+		box-shadow: inset 0 0 0 2px color( $color a( 70% ) );
+		color: color( $color a( 90% ) );
+	} @else {
+		box-shadow: inset 0 0 0 2px color( $bg-button a( 90% ) );
+		color: $bg-button;
+	}
+
+	text-shadow: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		@if $color {
+			background: $color;
+		} @else {
+			background: $bg-button;
+		}
+
+		color: #fff;
+	}
+}
+
+@mixin button-big( $font-increase: 0.1em ) {
+	font-size: calc( $fz-button + $font-increase );
+}
+
+@mixin button-small( $font-decrease: 0.1em ) {
+	font-size: calc( $fz-button - $font-decrease );
+	padding: 0.6em 0.8em;
+}
+
+@mixin button-color( $bg, $bg-hover: false, $color: #fff ) {
+	background: $bg;
+	color: $color;
+
+	&:hover,
+	&:focus,
+	&:active {
+		@if $bg-hover {
+			background: $bg-hover;
+		} @else {
+			background: color( $bg hue( +2 ) saturation( +7 ) lightness( +7 ) );
+		}
+
+		color: $color;
+	}
+}
+
+@mixin unbutton {
+	background: none;
+	outline: 0;
+	text-shadow: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background: none;
+	}
+}
+
+/*--------------------------------------------------------------
+# Form
+--------------------------------------------------------------*/
+
+@mixin field {
+	@include full-width-phone( left );
+	color: $c-field;
+	border: 0;
+	border-radius: $bdrs-field;
+	box-shadow: inset 0 0 0 1px $bdc-field;
+	font-family: $ff;
+	font-size: $fz-field;
+	line-height: $lh-field;
+	max-width: 100%;
+	padding: $p-field;
+}
+
+@mixin label( $display: inline ) {
+	font-size: $fz-label;
+	font-weight: $fw-bold;
+
+	@if $display == block {
+		clear: both;
+		display: block;
+		margin-bottom: 0.3rem;
+	}
+}
+
+/*--------------------------------------------------------------
+# Frame
+--------------------------------------------------------------*/
+
+@mixin frame( $height: 56.25% /* 16:9 */ ) {
+	height: 0;
+	overflow: hidden;
+	padding-bottom: $height;
+	position: relative;
+
+	iframe {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+/*--------------------------------------------------------------
+# Link
+--------------------------------------------------------------*/
+
+@mixin link( $color: false, $color-hover: false, $decoration: false ) {
+	@if $color {
+		color: $color;
+	} @else {
+		color: $c-link;
+	}
+
+	@if $decoration {
+		text-decoration: $decoration;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		@if $color-hover {
+			color: $color-hover;
+		} @else {
+			color: $c-link-hover;
+		}
+	}
+}
+
+@mixin link-incognito {
+	color: $c-text;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $c-link;
+	}
+}
+
+@mixin link-small {
+	font-size: calc( $fz - 0.2rem );
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+/*--------------------------------------------------------------
+# Nav
+--------------------------------------------------------------*/
+
+@mixin nav__item-spacing {
+	line-height: $h-masthead;
+	padding-left: $space-nav-item;
+	padding-right: $space-nav-item;
+}
+
+/*--------------------------------------------------------------
+# Notice
+--------------------------------------------------------------*/
+
+@mixin error {
+	@include box( $bg-error );
+	color: $c-error;
+
+	a {
+		@include link( $c-error, $c-error-hover );
+	}
+}
+
+@mixin notice {
+	@include box( $bg-notice );
+	color: $c-notice;
+
+	a {
+		@include link( $c-notice, $c-notice-hover );
+	}
+}
+
+/*--------------------------------------------------------------
+# Popup (overlay)
+--------------------------------------------------------------*/
+
+@mixin popup( $bg: false ) {
+	@if $bg {
+		background: $bg;
+	} @else {
+		background: $bg-popup;
+	}
+
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	overflow-y: scroll;
+	padding: $h-masthead $gap $gap;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transform: scale( 0.98 );
+	transition: all $trs-menu-mobile;
+	visibility: hidden;
+	z-index: $z-popup;
+
+	/* Close button */
+	> .popup__button {
+		@include icon-hide-label();
+		content: url( ../icons/close.svg );
+		line-height: $h-masthead;
+		padding: 0 $gap;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	/* Open state */
+	&.popup--open {
+		opacity: 1;
+		transform: scale( 1 );
+		visibility: visible;
+	}
+}
+
+@mixin unpopup {
+	background: none;
+	opacity: 1;
+	padding: 0;
+	position: static;
+	visibility: visible;
+	z-index: 0;
+}
+
+/*--------------------------------------------------------------
+# Section
+--------------------------------------------------------------*/
+
+@mixin section-background( $bg ) {
+	background: $bg;
+	border-bottom: 1px solid $c-border;
+	border-top: 1px solid $c-border;
+}
+
+@mixin section-space-bottom( $adjust: 0rem ) {
+	padding-bottom: calc( $space-section + $adjust );
+}
+
+@mixin section-space-top( $adjust: 0rem ) {
+	padding-top: calc( $space-section + $adjust );
+}
+
+@mixin section-space( $top-adjust: 0rem, $bottom-adjust: 0rem ) {
+	@include section-space-top( $top-adjust );
+	@include section-space-bottom( $bottom-adjust );
+}
+
+@mixin section-margin-bottom( $adjust: 0rem ) {
+	margin-bottom: calc( $space-section + $adjust );
+}
+
+@mixin section-margin-top( $adjust: 0rem ) {
+	margin-top: calc( $space-section + $adjust );
+}
+
+@mixin section-width( $column-count ) {
+	$minw: 92vw;
+	$maxw: $column-count * ( $w-column + $gap ) - $gap;
+
+	margin: 0 auto;
+	width: min( $minw, $maxw );
+}
+
+@mixin max-width( $column-count ) {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: calc( $column-count * ( $w-column + $gap ) - $gap );
+}
+
+/*--------------------------------------------------------------
+# LAYOUT
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Bottom space fix
+--------------------------------------------------------------*/
+
+@mixin bottom-space-fix {
+	> *:last-child {
+		margin-bottom: 0 !important;
+	}
+}
+
+/*--------------------------------------------------------------
+# Center child
+--------------------------------------------------------------*/
+
+@mixin center-child {
+	display: grid;
+	place-content: center;
+}
+
+/*--------------------------------------------------------------
+# Floats contain
+--------------------------------------------------------------*/
+
+@mixin floats-contain {
+	display: flow-root;
+}
+
+/*--------------------------------------------------------------
+# Flexbox
+--------------------------------------------------------------*/
+/**
+ * $justify: flex-start, flex-end, center, space-between, space-around, space-evenly
+ * $align: flex-start, flex-end, center, stretch, baseline
+ */
+@mixin flexbox( $direction: row, $wrap: wrap, $justify: flex-start, $align: stretch ) {
+	display: flex;
+	flex-flow: $direction $wrap;
+
+	@if $justify != flex-start {
+		justify-content: $justify;
+	}
+
+	@if $align != stretch {
+		align-items: $align;
+	}
+}
+
+@mixin flex-item-width( $count: 3, $space: 0 ) {
+	$width: calc( 100 / $count );
+	$width: $width%;
+
+	@if $space == 0 {
+		width: $width;
+	} @else {
+		width: calc( $width - $space );
+	}
+}
+
+/*--------------------------------------------------------------
+# Full width
+--------------------------------------------------------------*/
+
+@mixin full-width( $text-align: center ) {
+	margin-left: 0;
+	text-align: $text-align;
+	width: 100%;
+}
+
+@mixin full-width-phone( $text-align: center ) {
+	@media ( max-width: $_phone ) {
+		@include full-width( $text-align );
+	}
+}
+
+/* @link https://css-tricks.com/full-width-containers-limited-width-parents/ */
+@mixin force-full-width {
+	left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	position: relative;
+	right: 50%;
+	width: 100vw;
+}
+
+@mixin force-wide {
+	@media ( min-width: $desktop ) {		
+		margin-left: calc( 50% - 40vw );
+		max-width: 80vw;
+		width: 80vw;
+	}
+}
+
+/*--------------------------------------------------------------
+# Grid
+--------------------------------------------------------------*/
+
+@mixin grid( $columns: 12, $breakpoint: 768px ) {
+	/* Can't use repeat( 12, 1fr ) as $columns default */
+	/* Can't use $tablet as $breakpoint default */
+
+	/* Activate grid on larger screens */
+	@media ( min-width: $breakpoint ) {
+		display: grid;
+		gap: $gap;
+		grid-template-columns: repeat( $columns, 1fr );
+	}
+}
+
+@mixin grid-auto( $min: 200px, $max: 1fr ) {
+	display: grid;
+	gap: $gap;
+	grid-template-columns: repeat( auto-fit, minmax( $min, $max ) );
+}
+
+@mixin grid-custom( $columns: 1fr, $breakpoint: 768px ) {
+	/* Can't use $tablet as $breakpoint default */
+
+	/* Activate grid on larger screens */
+	@media ( min-width: $breakpoint ) {
+		display: grid;
+		gap: $gap;
+		grid-template-columns: $columns;
+	}
+}
+
+@mixin grid-side-image( $side: left, $element: entry, $columns: 1fr 2fr, $breakpoint: 768px ) {
+	/* Can't use $tablet as $breakpoint default */
+	@media ( min-width: $breakpoint ) {
+		display: grid;
+		gap: 0 $gap;
+		grid-template-columns: $columns; 
+		grid-template-rows: auto 1fr;
+
+		/* Image */
+		@if $element == entry {
+			.entry__image {
+				@if $side == right {
+					grid-column: 2 / 3;
+				}				
+				grid-row: 1 / 3;
+			}
+		}
+
+		@if $element == section {
+			.section__image {
+				@if $side == right {
+					grid-column: 2 / 3;
+				}
+				grid-row: 1 / 3;
+			}
+		}
+	}
+}
+
+@mixin grid-rows-collapse {
+	grid-template-rows: max-content;
+}
+
+/*--------------------------------------------------------------
+# MISC
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Background image
+--------------------------------------------------------------*/
+
+@mixin background-overlay( $overlay-color: false ) {
+	position: relative;
+
+	&::after {
+		@if $overlay-color {
+			background: $overlay-color;
+		} @else {
+			background: $bg-overlay;
+		}		
+		content: '';
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: $z-bg-overlay;
+	}
+	
+	.wrap {
+		position: relative;
+		z-index: calc( $z-bg-overlay + 1 );
+	}
+}
+
+@mixin background-image( $overlay-color: false ) {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	/* If overlay color is given, then configure the overlay. */
+	@if $overlay-color {
+		@include background-overlay( $overlay-color );
+	}
+}
+
+/*--------------------------------------------------------------
+# Hide icon text
+--------------------------------------------------------------*/
+
+@mixin icon-hide-label {
+	.icon {
+		svg {
+			margin-right: 0;
+		}
+	
+		&__label {
+			display: none;
+		}
+	}
+}
+/*--------------------------------------------------------------
+# Image replacement
+--------------------------------------------------------------*/
+
+@mixin image-replacement( $height: auto, $width: auto ) {
+	display: block;
+	height: $height;
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	width: $width;
+}
+
+/*--------------------------------------------------------------
+# Screen reader text
+--------------------------------------------------------------*/
+
+@mixin screen-reader-text {
+	clip: rect( 1px, 1px, 1px, 1px );
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+
+	&:focus {
+		background-color: #f1f1f1;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba( 0, 0, 0, 0.6 );
+		clip: auto !important;
+		color: #21759b;
+		display: block;
+		font-size: 14px;
+		font-size: 0.875rem;
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000; /* Above WP toolbar. */
+	}
+}
+
+/*--------------------------------------------------------------
+# Reset properties
+--------------------------------------------------------------*/
+
+@mixin reset {
+	all: unset;
+}

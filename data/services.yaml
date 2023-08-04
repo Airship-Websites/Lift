@@ -1,0 +1,26 @@
+title: Services
+subtitle: Find the service that fits your needs.
+link:
+  text: More Services
+  url: /services
+class:
+  entries: entries--3
+  entry: 
+  figure: graphic
+entries:
+  - title: Fermentum fringilla
+    text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
+    image: /svg/money.svg
+    link: /benefits
+  - title: Purus consectetur
+    text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
+    image: /svg/laptop.svg
+    link: /benefits
+  - title: Dapibus risus
+    text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
+    image: /svg/like.svg
+    link: /benefits
+  - title: Mollis Ffermentum
+    text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
+    image: /svg/chat.svg
+    link: /benefits

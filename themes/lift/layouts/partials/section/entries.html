@@ -1,0 +1,71 @@
+{{ $context := .context }}
+{{ $data := .data }}
+
+{{ with index $context.Site.Data $data }}
+<section class="section">
+	<div class="wrap">
+		<header class="section__header">
+			<h2 class="section__title">{{ .title }}</h2>
+			{{ if .subtitle }}
+				<p class="section__subtitle">{{ .subtitle }}</p>
+			{{ end }}
+		</header>
+		<div class="section__content entries {{ .class.entries }}">
+			{{ $id := .id }}
+			{{ $class_entry := .class.entry }}
+			{{ $class_figure := .class.figure }}
+			{{ range .entries }}
+				{{ $link := .link }}
+				<article class="entry {{ $class_entry }}">
+					<figure class="entry__image {{ $class_figure }}">
+						{{ if $link }}
+							<a href="{{ absURL .link }}">
+						{{ end }}
+
+						{{/* Image */}}
+						{{- partial "image.html" ( dict "title" .title "path" .image ) -}}
+						
+						{{ if $link }}
+							</a>
+						{{ end }}
+					</figure>
+					<header class="entry__header">
+						<h3 class="entry__title">
+							{{ if $link }}
+								<a href="{{ absURL .link }}">
+							{{ end }}
+							{{ .title }}
+							{{ if $link }}
+								</a>
+							{{ end }}
+						</h3>
+						{{ if .meta }}
+							<p class="entry__meta">{{ .meta }}</p>
+						{{ end }}
+					</header>
+					<div class="entry__content">
+						<p>
+							{{/* Team entry contact info */}}
+							{{ if eq $id "team" }}
+
+								{{/* Contact */}}
+								{{- partial "contact.html" . -}}
+
+							{{ end }}
+							{{ .text }} 
+							{{ if $link }}
+								<a href="{{ absURL .link }}" class="entry__link">{{ $context.Site.Params.more_text }}</a>
+							{{ end }}
+						</p>
+					</div><!-- .entry__content -->
+				</article>
+			{{ end }}
+		</div>
+		{{ if .link }}
+			<footer class="section__footer">
+				<a class="button" href="{{ absURL .link.url }}">{{ .link.text }}</a>
+			</footer>
+		{{ end }}
+	</div><!-- .wrap -->
+</section>
+{{ end }}

@@ -1,0 +1,21 @@
+{{ $context := .context }}
+{{ $data := .data }}
+{{ $class := .class }}
+
+{{ with index $context.Site.Data $data }}
+<section class="section section--faq {{ $class }}">
+	<div class="wrap">
+		<h2 class="section__title">{{ .title }}</h2>
+		<div class="faq">
+		{{ range .entries }}
+			<article class="faq__entry">
+				<h3 class="faq__q">{{ .question}}</h3>
+				<div class="faq__a">
+					{{ .answer }}
+				</div>
+			</article>
+		{{ end }}
+		</div>
+	</div><!-- .wrap -->
+</section>
+{{ end }}

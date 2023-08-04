@@ -1,0 +1,18 @@
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+<!-- Scripts -->
+{{ $js := resources.Get "js/scripts.js" | js.Build }}
+<script src="{{ $js.RelPermalink }}" type="module" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+
+{{/* Development */}}
+{{ if .Site.IsServer }}
+	<!-- Google Tag Manager is turned off in development -->
+{{/* Production */}}
+{{ else }}
+	<!-- Google Tag Manager -->
+	
+	<!-- End Google Tag Manager -->
+{{ end }}

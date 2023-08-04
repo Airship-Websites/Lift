@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+{{/* Clients section */}}
+{{- partial "section/gallery.html" ( dict "context" . "data" "clients" ) -}}
+
+{{/* Main content section */}}
+{{- partial "section/main.html" . -}}
+
+{{/* Benefits section */}}
+{{- partial "section/entries.html" ( dict "context" . "data" "benefits" ) -}}
+
+{{/* Video section */}}
+{{- partial "section/video.html" ( dict "context" . "data" "video" "class" "bg--medium" ) -}}
+
+{{/* Call-to-action section */}}
+{{- partial "section/cta.html" ( dict
+	"context" .
+	"data" "cta"
+	"class_layout" "section--cta-row"
+	"class_bg" "bg--dark"
+) -}}
+
+{{/* Services section */}}
+{{- partial "section/entries.html" ( dict "context" . "data" "services" ) -}}
+
+{{/* Team section */}}
+{{- partial "section/entries.html" ( dict "context" . "data" "team" ) -}}
+
+{{/* Testimonials section */}}
+{{- partial "section/testimonials.html" . -}}
+
+{{/* FAQ section */}}
+{{- partial "section/faq.html" ( dict "context" . "data" "faq" ) -}}
+
+{{/* Subscribe section */}}
+{{- partial "section/subscribe.html" . -}}
+
+{{ end }}

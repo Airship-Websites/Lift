@@ -1,0 +1,15 @@
+name: Lift
+
+# Brand
+logo:
+  url: /images/placeholder.svg
+  alt: Lift logo
+
+# Contact
+phone: 555-555-555
+email: hello@airshipwebsites.com
+
+# Social
+social:
+  facebook: https://www.facebook.com/
+  twitter: https://twitter.com/

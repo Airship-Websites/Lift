@@ -1,0 +1,27 @@
+id: team
+title: Our Team
+subtitle: We look forward to serving you.
+link:
+  text: View All
+  url: /team
+class:
+  entries: entries--3
+entries:
+  - title: Anna Pierce
+    meta: Founder
+    phone: 555-555-555
+    email: anna@company.com
+    image: /images/employee1.jpg
+    link: /team
+  - title: Michael Hurst
+    meta: Director
+    phone: 555-555-555
+    email: michael@company.com
+    image: /images/employee2.jpg
+    link: /team
+  - title: Joshua Doerr
+    meta: Manager
+    phone: 555-555-555
+    email: joshua@company.com
+    image: /images/employee3.jpg
+    link: /team

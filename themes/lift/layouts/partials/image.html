@@ -1,0 +1,9 @@
+{{/* SVG icon render code from SVG file */}}
+{{ if strings.Contains .path "svg/" }}
+	{{ $svg_path := printf "/static%s" .path }}
+	{{ readFile $svg_path | safeHTML }}
+
+{{/* Image */}}
+{{ else }}
+	<img src="{{ .path }}" alt="{{ .title }}">
+{{ end }}

@@ -1,0 +1,9 @@
+class:
+  entries: gallery--logos
+entries:
+  - title: CNN
+    image: /images/placeholder.svg
+  - title: WSJ
+    image: /images/placeholder.svg
+  - title: Time
+    image: /images/placeholder.svg

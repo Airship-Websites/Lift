@@ -1,0 +1,20 @@
+<ul class="contact">
+	<li>
+		<a href="tel:{{ .phone }}" itemprop="telephone">
+
+				{{/* Icon */}}
+				{{- partial "icon.html" "phone" -}}
+
+			{{ .phone }}
+		</a>
+	</li>
+	<li>
+		<a href="mailto:{{ .email }}" itemprop="email">
+			
+				{{/* Icon */}}
+				{{- partial "icon.html" "mail" -}}
+			
+			{{ .email }}
+		</a>
+	</li>
+</ul>

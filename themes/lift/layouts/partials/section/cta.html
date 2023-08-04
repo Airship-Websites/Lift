@@ -1,0 +1,17 @@
+{{ $context := .context }}
+{{ $data := .data }}
+{{ $class_layout := .class_layout | default "section--cta-row" }}
+{{ $class_bg := .class_bg | default "bg--dark" }}
+
+{{ with index $context.Site.Data $data }}
+<section class="section {{ $class_layout }} {{ $class_bg }}">
+	<div class="wrap">
+		<header class="section__header">
+			<h2 class="section__title">{{ index .entries 0 "title" }}</h2>
+		</header>
+		<footer class="section__footer">
+			<a class="button" href="{{ absURL .link.url }}">{{ .link.text }}</a>
+		</footer>
+	</div><!-- .wrap -->
+</section>
+{{ end }}

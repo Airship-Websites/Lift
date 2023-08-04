@@ -1,0 +1,4 @@
+<span class="icon">
+{{ $icon_path := printf "/static/icons/%s.svg" . }}
+{{ readFile $icon_path | safeHTML }}
+</span>

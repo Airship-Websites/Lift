@@ -1,0 +1,9 @@
+{{ define "main" }}
+
+{{/* Main content section */}}
+{{- partial "section/main.html" . -}}
+
+{{/* Team section */}}
+{{- partial "section/entries.html" ( dict "context" . "data" "team" ) -}}
+
+{{ end }}

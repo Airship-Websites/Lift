@@ -1,0 +1,263 @@
+/**
+ * PostCSS variables imported into stylesheets.
+ *
+ * Abbreviations used:
+ *
+ * c    -> color
+ * bg   -> background
+ *
+ * ff   -> font-family
+ * fz   -> font-size
+ * fw   -> font-weight
+ * lh   -> line-height
+ *
+ * w    -> width
+ * h    -> height
+ * maxw -> max-width
+ * m    -> margin
+ * p    -> padding
+ *
+ * bdrs -> border-radius
+ * bxsh -> box-shadow
+ * tsh  -> text-shadow
+ * trs  -> transition
+ *
+ * @package Base
+ * @author  Clay Teller
+ */
+
+/*--------------------------------------------------------------
+TABLE OF CONTENTS
+----------------------------------------------------------------
+# Color
+# Typography
+# Layout
+# Components
+# Effects
+# Z-index
+# Breakpoints
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Color
+--------------------------------------------------------------*/
+$c-brand:   hsl(0, 0%, 38%);
+$c-action:  hsl(0, 0%, 25%);
+$c-white:   hsl( 0, 0%, 100% );
+$c-light:   hsl( 0, 0%, 96% );
+$c-medium:  hsl( 0, 0%, 92% );
+$c-dark:    hsl( 0, 0%, 30% );
+
+/* Text
+----------------------------------*/
+
+$c-text:       hsl( 0, 0%, 25% );
+$c-strong:     color( $c-text lightness( +5 ) );
+$c-heading:    $c-text;
+$c-blockquote: color( $c-text lightness( +15 ) );
+$c-meta:       color( $c-text lightness( +28 ) );
+$c-title:      color( $c-white a( 95% ) );
+$c-subtitle:   color( $c-text lightness( +10 ) );
+$c-footer:     color( $c-white a( 80% ) );
+
+/* Links
+----------------------------------*/
+
+$c-link:              color( $c-brand lightness( -10 ) saturation( +5 ) );
+$c-link-hover:        color( $c-link lightness( +5 ) );
+$c-nav:               $c-text;
+$c-nav-hover:         color( $c-brand lightness( -5 ) saturation( +5 ) );
+$c-nav-active:        $c-nav-hover;
+$c-post-nav:          $c-heading;
+$c-post-nav-hover:    $c-brand;
+$c-meta-link:         $c-meta;
+$c-meta-link-hover:   $c-link;
+$c-footer-link:       color( $c-footer a( +10% ) );
+$c-footer-link-hover: color( $c-footer-link a( +20% ) );
+
+/* Backgrounds
+----------------------------------*/
+
+$bg-masthead: color( $c-white a( 97% ) );
+$bg-popup:    color( $c-brand a( 98% ) );
+
+/* Header background */
+$bg-header: color( $c-brand a( 97% ) );
+
+/* Section background */
+$bg-light:  $c-light;
+$bg-medium: $c-medium;
+$bg-dark:   $c-dark;
+$bg-brand:  $c-brand;
+
+/* Footer background */
+$bg-footer: color( $c-dark a( 97% ) );
+
+/* Colophon background */
+$bg-colophon: $c-dark;
+
+/* Background image overlay */
+$bg-overlay: color( $c-dark a( 90% ) );
+
+/* Notices
+----------------------------------*/
+
+$c-error:        hsl( 355, 87%, 55% );
+$c-error-hover:  color( $c-error lightness( +5 ) );
+$bg-error:       hsl( 355, 87%, 96% );
+$c-notice:       hsl( 36, 98%, 43% );
+$c-notice-hover: color( $c-notice lightness( +5 ) );
+$bg-notice:      hsl( 37, 100%, 95% );
+
+/* Social
+----------------------------------*/
+
+$c-facebook:  #1778F2;
+$c-instagram: #262626;
+$c-linkedin:  #0077B5;
+$c-twitter:   #55acee;
+
+/* Misc
+----------------------------------*/
+
+$c-border: hsl( 0, 0%, 83% );
+$c-border-menu-mobile: $c-border;
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+
+$ff:         'Open Sans', sans-serif;
+$ff-heading: $ff;
+
+$fz:        1rem;
+$fz-title:  calc( $fz + 2.1rem );
+$fz-h1:     calc( $fz + 1.6rem );
+$fz-h2:     calc( $fz + 1.1rem );
+$fz-h3:     calc( $fz + 0.6rem );
+$fz-h4:     calc( $fz + 0.1rem );
+$fz-h5:     $fz;
+$fz-small:  calc( $fz - 0.15rem );
+$fz-medium: calc( $fz + 0.2rem );
+$fz-large:  calc( $fz + 0.6rem );
+$fz-meta:   0.75rem;
+$fz-nav:    18px;
+$fz-nav-mobile: $fz-nav;
+$fz-label:  $fz-meta;
+
+$fw:         400;
+$fw-bold:    700;
+$fw-heading: $fw-bold;
+$fw-nav:     $fw-bold;
+
+$lh:         1.65;
+$lh-large:   1.5;
+$lh-heading: 1.3;
+
+$space-text:        1.5em;
+$space-heading:     0.4em;
+$space-heading-top: calc( $space-heading * 2 );
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+
+$w-column:  100px;
+$gap:       1.8rem;
+$maxw:      calc( 12 * ( $w-column + $gap ) - $gap );
+
+$h-masthead: 4.2rem;
+$w-submenu:  220px;
+$w-graphic:  250px;
+
+$space-list:     0.3rem;
+$space-image:    0.8rem;
+$space-nav-item: 0.8em;
+
+$space-section:     calc( 1.8rem + 2vw );
+$space-block:       1.6rem;
+$space-entry:       3rem;
+$space-gallery:     $space-block;
+$space-border:      2rem;
+
+$p-box: 1.3rem;
+
+$span-all: span 999;
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+
+/* Button
+----------------------------------*/
+
+$bg-button:                      $c-action;
+$bg-button-gradient:             color( $bg-button hue( +2 ) lightness( +2% ) );
+$bg-button-hover:                color( $bg-button-gradient hue( -2 ) lightness( +3% ) );
+$bg-button-gradient-transparent: color( $bg-button-gradient a( 0% ) );
+
+$bdrs-button:     2px;
+$c-button:        color( $c-white a( 90% ) );
+$fz-button:       1.1rem;
+$lh-button:       normal; /* For some reason, 'normal' is more consistent than 1 */
+$p-button:        0.8em 0.9em;
+$m-button:        0.6em;
+
+$bg-button-footer:       color( $bg-dark a( 90% ) );
+$bg-button-footer-hover: color( $bg-button-footer a( 95% ) );
+
+/* Field
+----------------------------------*/
+
+$c-field:    $c-text;
+$bdc-field:  color( $c-field lightness( +20 ) );
+$bdrs-field: 2px;
+$fz-field:   $fz-button;
+$lh-field:   $lh-button;
+$p-field:    $p-button;
+
+/* Icon
+----------------------------------*/
+
+$c-icon:     currentColor;
+$space-icon: 0.4em;
+
+/*--------------------------------------------------------------
+# Effects
+--------------------------------------------------------------*/
+
+$bdrs:        8px;
+$bdrs-circle: 999px;
+$bxsh:        0 0 5px 0 hsla( 0, 0%, 0%, 0.1 );
+$bxsh-on:     0 0 15px 0 hsla( 0, 0%, 0%, 0.13 );
+$tsh:         1px 1px hsla( 0, 0%, 0%, 0.15 );
+$trs:         0.3s;
+/* @link http://easings.net/#easeInOutQuint */
+$trs-menu-mobile: 0.7s cubic-bezier( 0.075, 0.820, 0.165, 1.000 );
+
+/*--------------------------------------------------------------
+# Z-index
+--------------------------------------------------------------*/
+
+$z-popup:       50;
+$z-menu-toggle: 40;
+$z-menu:        30;
+$z-masthead:    20;
+$z-bg-overlay:  10;
+
+/*--------------------------------------------------------------
+# Breakpoints
+--------------------------------------------------------------*/
+
+$small-phone:   400px;
+$_small-phone:  calc( $small-phone - 1px );
+$phone:         560px;
+$_phone:        calc( $phone - 1px );
+$tablet:        768px;
+$_tablet:       calc( $tablet - 1px );
+$desktop:       992px;
+$_desktop:      calc( $desktop - 1px );
+$large-desktop: 1200px;
+
+$phone-site-nav:  $phone;
+$_phone-site-nav: calc( $phone-site-nav - 1px );

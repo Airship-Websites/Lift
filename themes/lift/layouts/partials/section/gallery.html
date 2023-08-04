@@ -1,0 +1,17 @@
+{{ $context := .context }}
+{{ $data := .data }}
+{{ $class := .class | default "bg--dark" }}
+
+{{ with index $context.Site.Data $data }}
+<section class="section {{ $class }}">
+	<div class="wrap">
+		<div class="section__content gallery {{ .class.entries }}">
+			{{ range .entries }}
+				<figure class="gallery__image">
+					<img src="{{ .image }}" alt="{{ .title }}">
+				</figure>
+			{{ end }}
+		</div>
+	</div><!-- .wrap -->
+</section>
+{{ end }}

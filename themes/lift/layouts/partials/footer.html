@@ -1,0 +1,48 @@
+{{/* Call-to-action section */}}
+{{- partial "section/cta.html" ( dict
+	"context" .
+	"data" "cta"
+	"class_layout" "section--cta-full"
+	"class_bg" "bg--dark"
+) -}}
+
+<footer class="footer" role="contentinfo">
+	<div class="wrap">
+		<div class="footer__area">
+
+			{{/* Brand */}}
+			{{- partial "brand.html" . -}}
+
+			{{/* Contact */}}
+			{{- partial "contact.html" .Site.Data.company -}}
+
+		</div>
+		<div class="footer__area">
+
+		</div>
+		<div class="footer__area">
+
+			{{/* Nav */}}
+			{{- partial "nav.html" ( dict "menu_id" "footer" ) -}}
+
+		</div>
+	</div>
+</footer>
+
+<section class="colophon">
+	<div class="wrap">
+		<div class="colophon__area">
+
+			{{/* Social */}}
+			{{- partial "social.html" . -}}
+
+		</div>
+		<div class="colophon__area">
+			<ul class="links">
+				<li><a href="/terms">Terms & Conditions</a></li>
+				<li><a href="/privacy">Privacy Policy</a></li>
+			</ul>
+			<p>© {{ now.Year }} {{ .Site.Data.company.name }}</p>
+		</div>
+	</div>
+</section>

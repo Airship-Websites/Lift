@@ -1,0 +1,51 @@
+<section class="masthead js-masthead" role="banner">
+	<div class="wrap">
+
+		{{/* Brand */}}
+		{{- partial "brand.html" . -}}
+
+		{{/* Nav */}}
+		{{- partial "nav.html" ( dict "menu_id" "main" ) -}}
+		
+	</div><!-- .wrap -->
+</section>
+
+{{ $header_bg_url := .Page.Params.headerImage | default .Site.Params.headerImage | absURL }}
+{{ $footer_bg_url := .Page.Params.footerImage | default .Site.Params.footerImage | absURL }}
+<style type="text/css">
+	.header {
+		background-image: url({{ $header_bg_url }});
+	}
+	@media (min-width: 768px) {
+		.header {
+			background-image: url({{ $header_bg_url }});
+		}
+	}
+	.footer {
+		background-image: url({{ $footer_bg_url }});
+	}
+	@media (min-width: 768px) {
+		.footer {
+			background-image: url({{ $footer_bg_url }});
+		}
+	}	
+</style>
+
+<header class="header">
+	<div class="wrap">
+
+		{{/*  Home header  */}}
+		{{ if .IsHome }}
+			<h1 class="title">{{ .Title }}</h1>
+			<p class="subtitle">{{ .Params.subtitle }}</p>
+			<div>
+				<a class="button button--secondary" href="{{ absURL .Site.Data.cta.link.url }}">{{ .Site.Data.cta.link.text }}</a>
+			</div>
+
+		{{/*  Other pages header  */}}
+		{{ else }}
+		<h1 class="title">{{ .Title }}</h1>
+		{{ end }}
+		
+	</div><!-- .wrap -->
+</header>

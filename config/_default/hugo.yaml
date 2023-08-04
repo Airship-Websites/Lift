@@ -1,0 +1,62 @@
+baseURL: https://lift.airshipwebsites.com
+languageCode: en-us
+title: Lift theme
+theme: lift
+author:
+  name: Airship
+  homepage: https://airshipwebsites.com
+
+summaryLength: 70
+
+# Menus
+menu:
+  main:
+  - name: Home
+    pageRef: /
+    weight: 10
+  - name: Services
+    pageRef: /services
+    weight: 20
+  - name: Service 1
+    parent: Services
+    pageRef: /services/service-1
+    weight: 1
+  - name: Service 2
+    parent: Services
+    pageRef: /services/service-2
+    weight: 2    
+  - name: About
+    pageRef: /about
+    weight: 30
+  - name: Contact
+    pageRef: /contact
+    weight: 40
+  footer:
+  - name: Home
+    pageRef: /
+    weight: 10
+  - name: Services
+    pageRef: /services
+    weight: 20
+  - name: Service 1
+    parent: Services
+    pageRef: /services/service-1
+    weight: 1
+  - name: Service 2
+    parent: Services
+    pageRef: /services/service-2
+    weight: 2
+  - name: About
+    pageRef: /about
+    weight: 30
+  - name: Contact
+    pageRef: /contact
+    weight: 40
+
+
+# Custom variables
+params:
+  headerImage: images/header.jpg
+  footerImage: images/footer.jpg
+  description: Starter theme for small business websites.
+  more_text: More
