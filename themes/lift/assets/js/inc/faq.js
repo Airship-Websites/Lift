@@ -1,8 +1,8 @@
 /**
  * Toggle FAQs.
  *
- * @package Base
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  * @since   1.0.0
  */
 

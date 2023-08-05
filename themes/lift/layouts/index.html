@@ -27,7 +27,7 @@
 {{- partial "section/entries.html" ( dict "context" . "data" "team" ) -}}
 
 {{/* Testimonials section */}}
-{{- partial "section/testimonials.html" . -}}
+{{- partial "section/testimonials.html" ( dict "context" . "data" "testimonials" ) -}}
 
 {{/* FAQ section */}}
 {{- partial "section/faq.html" ( dict "context" . "data" "faq" ) -}}

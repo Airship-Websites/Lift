@@ -14,6 +14,8 @@ menu:
   - name: Home
     pageRef: /
     weight: 10
+    params:
+      class: home
   - name: Services
     pageRef: /services
     weight: 20

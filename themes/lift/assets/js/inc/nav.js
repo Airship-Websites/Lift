@@ -1,8 +1,8 @@
 /**
  * Nav/menu functionality.
  *
- * @package Blueprint
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  * @since   1.0.0
  *
  * @requires gsap.js

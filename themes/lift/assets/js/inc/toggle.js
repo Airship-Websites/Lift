@@ -1,8 +1,8 @@
 /**
  * Toggle an element off/on.
  *
- * @package Blueprint
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  * @since   1.0.0
  */
 

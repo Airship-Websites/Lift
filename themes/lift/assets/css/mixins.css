@@ -1,8 +1,8 @@
 /**
  * PostCSS mixins imported into stylesheets.
  *
- * @package Blueprint
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  */
 
 /*--------------------------------------------------------------
@@ -340,7 +340,7 @@ TABLE OF CONTENTS
 }
 
 @mixin link-small {
-	font-size: calc( $fz - 0.2rem );
+	font-size: $fz-small;
 	text-decoration: none;
 	text-transform: uppercase;
 	white-space: nowrap;

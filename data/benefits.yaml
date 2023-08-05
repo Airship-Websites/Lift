@@ -5,7 +5,7 @@ link:
   url: /benefits
 class:
   entries: entries--2
-  entry: entry--left-image
+  entry: entry--left-image entry--medium
   figure: graphic
 entries:
   - title: Fermentum fringilla

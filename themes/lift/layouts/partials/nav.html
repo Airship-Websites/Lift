@@ -1,15 +1,18 @@
 {{ $menu_id := .menu_id }}
 
-{{ $class := "" }}
+{{ $type := "" }}
+{{ $isMain := false }}
+
 {{ if eq $menu_id "main" }}
-	{{ $class = "nav" }}
+	{{ $isMain = true }}
+	{{ $type = "nav" }}
 {{ else if eq $menu_id "footer" }}
-	{{ $class = "nav-footer" }}
+	{{ $type = "nav-footer" }}
 {{ end }}
 
-<nav class="{{ $class }}" role="navigation">
+<nav class="{{ $type }}" role="navigation">
 
-	{{ if eq $menu_id "main" }}
+	{{ if $isMain }}
 		<button class="nav__toggle js-nav__toggle" title="Menu" aria-controls="nav" aria-expanded="false"
 			data-target="js-nav">
 
@@ -22,19 +25,19 @@
 		</button>
 	{{ end }}
 
-	<ul class="{{ $class }}__menu {{ if eq $menu_id "main" }}js-nav__menu{{ end }}">
+	<ul class="{{ $type }}__menu {{ if $isMain }}js-nav__menu{{ end }}">
 
 		{{ range index site.Menus $menu_id }}
-		<li class="{{ $class }}__item">
-			<a href="{{ .URL }}">
+		<li class="{{ $type }}__item {{ if .Params.class }}{{ $type }}__item--{{ .Params.class }}{{ end }}">
+			<a href="{{ absURL .URL }}">
 				{{ .Name }}
 			</a>
 
 			{{ if .Children }}
-				<ul class="{{ $class }}__sub">
+				<ul class="{{ $type }}__sub">
 					{{ range .Children }}
-						<li class="{{ $class }}__item">
-							<a href="{{ .URL }}">
+						<li class="{{ $type }}__item">
+							<a href="{{ absURL .URL }}">
 								{{ .Name }}
 							</a>
 						</li>

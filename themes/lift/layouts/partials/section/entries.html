@@ -1,8 +1,9 @@
 {{ $context := .context }}
 {{ $data := .data }}
+{{ $class := .class }}
 
 {{ with index $context.Site.Data $data }}
-<section class="section">
+<section class="section {{ $class }}">
 	<div class="wrap">
 		<header class="section__header">
 			<h2 class="section__title">{{ .title }}</h2>

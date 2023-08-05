@@ -1,29 +1,31 @@
 /**
  * Load javascript modules and run scripts.
  *
- * @package Base
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  * @since   1.0.0
  */
 
-import {
-	kenBurnsEffect
-} from 'js/inc/animate.js';
-import FAQ from 'js/inc/faq.js';
 import Toggle from 'js/inc/toggle';
+import Rotate from 'js/inc/rotate';
 import * as Nav from 'js/inc/nav';
+import FAQ from 'js/inc/faq.js';
+import { kenBurnsEffect } from 'js/inc/animate.js';
 
 ( function () {
 
-	// Animations
-	kenBurnsEffect();
-
-	// FAQ toggle
+	// Toggle FAQ
 	const faq = new FAQ();
 
-	// Nav toggle
+	// Toggle nav
 	const toggle = new Toggle( {
 		triggerClass: 'js-nav__toggle',
+	} );
+
+	// Rotate testimonials
+	const rotateTestimonials = new Rotate( {
+		containerClass: 'js-rotate--testimonials',
+		displayTime:    14,
 	} );
 
 	// Nav
@@ -31,4 +33,8 @@ import * as Nav from 'js/inc/nav';
 	Nav.toggleOnScroll();
 	Nav.animateMenuToggle();
 	Nav.clickOffMenu();
+
+	// Animations
+	kenBurnsEffect();
+
 } )();

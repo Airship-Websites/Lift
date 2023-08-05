@@ -1,8 +1,8 @@
 /**
  * The main theme styles imported into style.css.
  *
- * @package Base
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  */
 
 /*--------------------------------------------------------------
@@ -389,6 +389,10 @@ input.submit {
 # Images
 --------------------------------------------------------------*/
 
+.circle img {
+	border-radius: $bdrs-circle;
+}
+
 .icon svg {
 	fill: $c-icon;
 	height: 0.95em;
@@ -403,7 +407,6 @@ input.submit {
 
 .graphic svg {
 	fill: $c-brand;
-	max-width: $w-graphic;
 }
 
 /*--------------------------------------------------------------
@@ -776,6 +779,22 @@ ul.links {
 	}
 }
 
+/* Rotate
+----------------------------------*/
+
+.js-rotate {
+	position: relative;
+	/* Hide until displayed with javascript */
+	visibility: hidden;
+
+	&__item {
+		left: 50%;
+		margin: 0;
+		position: absolute;
+		top: 50%;
+	}
+}
+
 /*--------------------------------------------------------------
 # SECTIONS
 --------------------------------------------------------------*/
@@ -1097,8 +1116,8 @@ ul.links {
 --------------------------------------------------------------*/
 
 .header {
-	/* The 'background-image' property is set inline by WordPress theme. */
-	@include background-image($bg-header );
+	/* The 'background-image' property is set in 'header.html' */
+	@include background-image($bg-header);
 	padding-bottom: $space-section;
 	padding-top: calc($h-masthead + $space-section );
 	text-align: center;
@@ -1207,10 +1226,33 @@ ul.links {
 # Entries
 --------------------------------------------------------------*/
 
+.entries {
+	display: grid;
+	gap: $gap;
+
+	/* 2 columns */
+	&--2 {
+		@include grid(2);
+	}
+
+	/* 3 columns */
+	&--3 {
+		@include grid(3);
+	}
+
+	/* 4 columns */
+	&--4 {
+		@include grid(4);
+	}
+}
+
 /* Entry
 ----------------------------------*/
 
 .entry {
+	a {
+		text-decoration: none;
+	}
 
 	/* Image */
 	&__image {
@@ -1233,6 +1275,8 @@ ul.links {
 			img,
 			svg {
 				opacity: 0.93;
+				scale: 1.03;
+				transition: all $trs;
 			}
 		}
 	}
@@ -1284,55 +1328,39 @@ ul.links {
 			margin: 0.4em 0.15em;
 		}
 	}
-}
 
-/* List entries
-----------------------------------*/
-
-.entries {
-	display: grid;
-	gap: $gap;
-
-	.entry {
-		a {
-			text-decoration: none;
-		}
-
-		.entry__link {
-			@include link-small;
-		}
-
-		&--left-image {
-			@include grid-side-image;
-		}
-
-		&--right-image {
-			@include grid-side-image(right);
-		}
+	/* More link */
+	&__link {
+		@include link-small;
 	}
 
-	&--2 {
-		@include grid(2);
+	/* Image left of content */
+	&--left-image {
+		@include grid-side-image;
 	}
 
-	&--3 {
-		@include grid(3);
+	/* Image right of content */
+	&--right-image {
+		@include grid-side-image(right);
 	}
 
-	&--4 {
-		@include grid(4);
+	/* Small image */
+	&--small {
+		text-align: center;
+
+		.entry__image {
+			margin: 0 auto;
+			max-width: 150px;
+		}
+	}
+	
+	/* Medium image */
+	&--medium {
+		.entry__image {
+			max-width: 250px;
+		}
 	}
 }
-
-/* Vertical entry
-----------------------------------*/
-
-
-
-/* Horizontal entry
-----------------------------------*/
-
-
 
 /* Alternating entries
 ----------------------------------*/
@@ -1350,28 +1378,6 @@ ul.links {
 		@media (min-width: $phone ) {
 			@include border-top(0rem, 0.8rem);
 		}
-	}
-}
-
-/* Single entry
-----------------------------------*/
-
-.single .main .wrap > .entry {
-	@include flexbox(column);
-	/* Allow reordering of children */
-
-	.entry__header {
-		order: -1;
-		/* Move to first position */
-	}
-
-	.entry__header,
-	.entry__content {
-		margin-bottom: $space-block;
-	}
-
-	.entry__image {
-		margin-bottom: $space-section;
 	}
 }
 
@@ -1525,6 +1531,66 @@ ul.links {
 	
 	.section__footer {
 		margin-top: 0;
+	}
+}
+
+/* Testimonial section
+----------------------------------*/
+
+.section--testimonials {
+	.js-rotate {
+		height: 48rem;
+		
+		@media ( min-width: $small-phone ) and ( max-width: $_phone ) {
+			height: 44rem;
+		}
+		
+		@media ( min-width: $phone ) and ( max-width: $_tablet ) {
+			height: 32rem;
+		}
+
+		@media ( min-width: $tablet ) {
+			height: 26rem;
+		}
+	}
+}
+
+.testimonial {
+	@include section-width( 8 );
+	text-align: center;
+
+	&::before {
+		color: $c-brand;
+		content: "\201c";
+		display: block;
+		font-size: 10.6rem;
+		margin: -5.3rem 0 -7.4rem;
+		width: 100%;
+	}
+
+	&__quote {
+		color: color( $c-heading lightness( +10% ) );
+		font-weight: $fw-bold;
+		margin-bottom: 2.2rem;
+
+		&::before {
+			content: "“"
+		}
+
+		&::after {
+			content: "”"
+		}
+	}
+
+	&__name {
+		color: color( $c-heading lightness( +25% ) );
+		font-size: 1.3rem;
+		margin-bottom: 0;
+		text-transform: uppercase;
+
+		&::before {
+			content: "– "
+		}
 	}
 }
 

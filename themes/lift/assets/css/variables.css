@@ -22,8 +22,8 @@
  * tsh  -> text-shadow
  * trs  -> transition
  *
- * @package Base
- * @author  Clay Teller
+ * @package Lift
+ * @author Airship
  */
 
 /*--------------------------------------------------------------
@@ -81,8 +81,11 @@ $c-footer-link-hover: color( $c-footer-link a( +20% ) );
 $bg-masthead: color( $c-white a( 97% ) );
 $bg-popup:    color( $c-brand a( 98% ) );
 
+/* Background image overlay */
+$bg-overlay: color( $c-dark a( 70% ) );
+
 /* Header background */
-$bg-header: color( $c-brand a( 97% ) );
+$bg-header: $bg-overlay;
 
 /* Section background */
 $bg-light:  $c-light;
@@ -91,13 +94,10 @@ $bg-dark:   $c-dark;
 $bg-brand:  $c-brand;
 
 /* Footer background */
-$bg-footer: color( $c-dark a( 97% ) );
+$bg-footer: $bg-overlay;
 
 /* Colophon background */
 $bg-colophon: $c-dark;
-
-/* Background image overlay */
-$bg-overlay: color( $c-dark a( 90% ) );
 
 /* Notices
 ----------------------------------*/
@@ -140,7 +140,7 @@ $fz-h5:     $fz;
 $fz-small:  calc( $fz - 0.15rem );
 $fz-medium: calc( $fz + 0.2rem );
 $fz-large:  calc( $fz + 0.6rem );
-$fz-meta:   0.75rem;
+$fz-meta:   $fz-small;
 $fz-nav:    18px;
 $fz-nav-mobile: $fz-nav;
 $fz-label:  $fz-meta;
@@ -168,7 +168,6 @@ $maxw:      calc( 12 * ( $w-column + $gap ) - $gap );
 
 $h-masthead: 4.2rem;
 $w-submenu:  220px;
-$w-graphic:  250px;
 
 $space-list:     0.3rem;
 $space-image:    0.8rem;
