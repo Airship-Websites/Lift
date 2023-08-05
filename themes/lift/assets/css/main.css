@@ -1637,7 +1637,7 @@ ul.links {
 			background: $c-link;
 			content: '';
 			height: 1rem;
-			mask: url( ../icons/chevron.svg ) no-repeat;
+			mask: url( ../icons/chevron.svg) no-repeat;
 			mask-size: contain;
 			position: absolute;
 			right: 1rem;
