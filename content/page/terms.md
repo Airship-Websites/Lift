@@ -1,7 +1,6 @@
 ---
-title: About
-slug: about
-layout: about
+title: Terms & Conditions
+slug: terms
 
 # PARAMS
 # Description for HEAD tags

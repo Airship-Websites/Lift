@@ -2,7 +2,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	{{ $title := print .Title " - " .Site.Params.description }}
+	{{ $description := or .Params.description .Site.Params.description }}
+	{{ $title := printf "%s - %s" .Title $description }}
 	<title>{{ $title }}</title>
 
 	<meta property="og:title" content="{{ $title }}">
@@ -11,17 +12,10 @@
 	<meta name="application-name" content="{{ $title }}">
 	<meta name="og:site_name" content="{{ $title }}">
 
-	{{ if .Params.description }}
-		<meta name="description" content="{{ .Params.description }}">
-		<meta itemprop="description" content="{{ .Params.description }}">
-		<meta property="og:description" content="{{ .Params.description }}">
-		<meta name="twitter:description" content="{{ .Params.description }}">
-	{{ else }}
-		<meta name="description" content="{{ .Site.Params.description }}">
-		<meta itemprop="description" content="{{ .Site.Params.description }}">
-		<meta property="og:description" content="{{ .Site.Params.description }}">
-		<meta name="twitter:description" content="{{ .Site.Params.description }}">
-	{{ end }}
+	<meta name="description" content="{{ $description }}">
+	<meta itemprop="description" content="{{ $description }}">
+	<meta property="og:description" content="{{ $description }}">
+	<meta name="twitter:description" content="{{ $description }}">
 
 	<meta name="robots" content="index,follow">
 	<meta name="HandheldFriendly" content="True">

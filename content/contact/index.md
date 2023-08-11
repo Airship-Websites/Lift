@@ -1,7 +1,13 @@
 ---
 title: Contact
-description: # For search engines
 slug: contact
-headerImage: # Override default header background image
-footerImage: # Override default footer background image
+layout: contact
+
+# PARAMS
+# Description for HEAD tags
+description: 
+# Header background image path
+header_image: 
+# Footer background image path
+footer_image: 
 ---

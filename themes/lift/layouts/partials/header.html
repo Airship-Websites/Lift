@@ -10,8 +10,8 @@
 	</div><!-- .wrap -->
 </section>
 
-{{ $header_bg_url := .Page.Params.headerImage | default .Site.Params.headerImage | absURL }}
-{{ $footer_bg_url := .Page.Params.footerImage | default .Site.Params.footerImage | absURL }}
+{{ $header_bg_url := .Page.Params.header_image | default .Site.Params.header_image | absURL }}
+{{ $footer_bg_url := .Page.Params.footer_image | default .Site.Params.footer_image | absURL }}
 <style type="text/css">
 	.header {
 		background-image: url({{ $header_bg_url }});

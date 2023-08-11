@@ -7,9 +7,11 @@ author:
   homepage: https://airshipwebsites.com
 
 summaryLength: 70
+# Google Analytics tracking code
+googleAnalytics: 
 
-# Menus
 menu:
+  # Main menu
   main:
   - name: Home
     pageRef: /
@@ -33,6 +35,7 @@ menu:
   - name: Contact
     pageRef: /contact
     weight: 40
+  # Footer menu
   footer:
   - name: Home
     pageRef: /
@@ -55,10 +58,19 @@ menu:
     pageRef: /contact
     weight: 40
 
+taxonomies:
+  # Projects taxonomy
+  projects:
+    type:
+      label: Type
 
-# Custom variables
 params:
-  headerImage: images/header.jpg
-  footerImage: images/footer.jpg
+  # DEFAULTS
+  # Description for HEAD tags
   description: Starter theme for small business websites.
+  # The text used for "More" buttons/links
   more_text: More
+  # Header background image path
+  header_image: images/header.jpg
+  # Footer background image path
+  footer_image: images/footer.jpg

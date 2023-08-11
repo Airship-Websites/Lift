@@ -2,7 +2,7 @@
  * Animation javascript.
  *
  * @package Lift
- * @author Airship
+ * @author  Airship
  * @since   1.0.0
  *
  * @requires gsap.js

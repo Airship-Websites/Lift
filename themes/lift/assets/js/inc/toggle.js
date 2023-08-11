@@ -2,7 +2,7 @@
  * Toggle an element off/on.
  *
  * @package Lift
- * @author Airship
+ * @author  Airship
  * @since   1.0.0
  */
 
