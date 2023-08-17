@@ -1,3 +1,8 @@
+{{ $class_page := "" }}
+{{ with .Page.Params.class_page }}
+	{{ $class_page = print "page--" . }}
+{{ end }}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +10,7 @@
 	{{- partial "head.html" . -}}
 	
 	<body>
-		<div class="page page--{{ .Page.Params.slug }}">
+		<div class="page {{ $class_page }}">
 
 			{{/* Header */}}
 			{{- partial "header.html" . -}}

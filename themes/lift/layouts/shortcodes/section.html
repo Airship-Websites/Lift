@@ -1,0 +1,7 @@
+{{- partial "section/entries.html" ( dict
+	"context" .
+	"data" (.Get "type")
+	"tag_filter" (.Get "tag_filter")
+	"class" (.Get "class")
+	"title" (.Get "title")
+) -}}

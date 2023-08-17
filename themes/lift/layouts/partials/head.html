@@ -1,10 +1,13 @@
+{{ $description := or .Params.description .Site.Params.description }}
+{{ $title := printf "%s | %s" .Title .Site.Title }}
+{{ if .IsHome }}
+	{{ $title = printf "%s - %s" .Site.Title .Params.title_meta }}
+{{ end }}
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	{{ $description := or .Params.description .Site.Params.description }}
-	{{ $title := printf "%s - %s" .Title $description }}
-	<title>{{ $title }}</title>
+	<title>{{ $title }}</title>	
 
 	<meta property="og:title" content="{{ $title }}">
 	<meta name="twitter:title" content="{{ $title }}">

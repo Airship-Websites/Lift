@@ -5,8 +5,8 @@ author: "Clay Teller"
 draft: true
 
 # PARAMS
-# Description for HEAD tags
-description: 
+# Meta description
+description_meta: 
 # Header background image path
 header_image: 
 # Footer background image path

@@ -52,10 +52,11 @@ TABLE OF CONTENTS
 @mixin title {
 	color: $c-title;
 	font-family: $ff-heading;
-	font-size: $fz-h1;
+	font-size: $fz-title;
 	font-weight: $fw-heading;
 	margin-bottom: 0;
 	text-shadow: $tsh;
+	text-wrap: balance;
 }
 
 /*--------------------------------------------------------------
@@ -69,6 +70,7 @@ TABLE OF CONTENTS
 	line-height: $lh-heading;
 	margin-bottom: $space-heading;
 	margin-top: 0;
+	text-wrap: balance;
 
 	@if $level == h1 {
 		font-size: $fz-h1;
@@ -214,7 +216,11 @@ TABLE OF CONTENTS
 			background: $bg-button;
 		}
 
-		color: #fff;
+		@if $color == $c-white {
+			color: $c-text;
+		} @else {
+			color: $c-white;
+		}
 	}
 }
 
@@ -461,11 +467,12 @@ TABLE OF CONTENTS
 	margin-top: calc( $space-section + $adjust );
 }
 
-@mixin section-width( $column-count ) {
+@mixin section-width( $column-count: 12 ) {
 	$minw: 92vw;
 	$maxw: $column-count * ( $w-column + $gap ) - $gap;
 
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 	width: min( $minw, $maxw );
 }
 

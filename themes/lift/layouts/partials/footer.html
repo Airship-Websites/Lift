@@ -6,6 +6,18 @@
 	"class_bg" "bg--dark"
 ) -}}
 
+{{ $footer_bg_url := .Page.Params.footer_image | default .Site.Params.footer_image | absURL }}
+<style type="text/css">
+	.footer {
+		background-image: url({{ $footer_bg_url }});
+	}
+	@media (min-width: 768px) {
+		.footer {
+			background-image: url({{ $footer_bg_url }});
+		}
+	}	
+</style>
+
 <footer class="footer" role="contentinfo">
 	<div class="wrap">
 		<div class="footer__area">
@@ -23,7 +35,7 @@
 		<div class="footer__area">
 
 			{{/* Nav */}}
-			{{- partial "nav.html" ( dict "menu_id" "footer" ) -}}
+			{{- partial "nav.html" ( dict "context" . "menu_id" "footer" ) -}}
 
 		</div>
 	</div>

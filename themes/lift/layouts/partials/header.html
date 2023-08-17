@@ -5,13 +5,12 @@
 		{{- partial "brand.html" . -}}
 
 		{{/* Nav */}}
-		{{- partial "nav.html" ( dict "menu_id" "main" ) -}}
+		{{- partial "nav.html" ( dict "context" . "menu_id" "main" ) -}}
 		
 	</div><!-- .wrap -->
 </section>
 
 {{ $header_bg_url := .Page.Params.header_image | default .Site.Params.header_image | absURL }}
-{{ $footer_bg_url := .Page.Params.footer_image | default .Site.Params.footer_image | absURL }}
 <style type="text/css">
 	.header {
 		background-image: url({{ $header_bg_url }});
@@ -21,14 +20,6 @@
 			background-image: url({{ $header_bg_url }});
 		}
 	}
-	.footer {
-		background-image: url({{ $footer_bg_url }});
-	}
-	@media (min-width: 768px) {
-		.footer {
-			background-image: url({{ $footer_bg_url }});
-		}
-	}	
 </style>
 
 <header class="header">

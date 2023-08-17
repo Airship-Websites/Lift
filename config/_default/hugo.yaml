@@ -7,8 +7,6 @@ author:
   homepage: https://airshipwebsites.com
 
 summaryLength: 70
-# Google Analytics tracking code
-googleAnalytics: 
 
 menu:
   # Main menu
@@ -58,13 +56,9 @@ menu:
     pageRef: /contact
     weight: 40
 
-taxonomies:
-  # Projects taxonomy
-  projects:
-    type:
-      label: Type
-
 params:
+  # Google Tag Manager ID
+  gtm: GTM-XXXXXXXX
   # DEFAULTS
   # Description for HEAD tags
   description: Starter theme for small business websites.

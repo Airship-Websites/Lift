@@ -8,15 +8,15 @@ class:
   entry: entry--left-image entry--medium
   figure: graphic
 entries:
-  - title: Fermentum fringilla
+  - title: Fermentum Fringilla
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/money.svg
     link: /benefits
-  - title: Purus consectetur
+  - title: Purus Consectetur
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/laptop.svg
     link: /benefits
-  - title: Dapibus risus
+  - title: Dapibus Risus
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/like.svg
     link: /benefits

@@ -1,3 +1,4 @@
+{{ $context := .context }}
 {{ $menu_id := .menu_id }}
 
 {{ $type := "" }}
@@ -28,24 +29,32 @@
 	<ul class="{{ $type }}__menu {{ if $isMain }}js-nav__menu{{ end }}">
 
 		{{ range index site.Menus $menu_id }}
-		<li class="{{ $type }}__item {{ if .Params.class }}{{ $type }}__item--{{ .Params.class }}{{ end }}">
-			<a href="{{ absURL .URL }}">
-				{{ .Name }}
-			</a>
+			{{ $current := or ($context.IsMenuCurrent .Menu .) ($context.HasMenuCurrent .Menu .) }}
+			{{ $class := printf "%s__item" $type }}
+			{{ if .Params.class }}
+				{{ $class = printf "%s %s__item--%s" $class $type .Params.class }}
+			{{ end }}
+			{{ if $current }}
+				{{ $class = printf "%s %s__item--current" $class $type }}
+			{{ end }}
+			<li class="{{ $class }}">
+				<a href="{{ absURL .URL }}">
+					{{ .Name }}
+				</a>
 
-			{{ if .Children }}
-				<ul class="{{ $type }}__sub">
-					{{ range .Children }}
-						<li class="{{ $type }}__item">
-							<a href="{{ absURL .URL }}">
-								{{ .Name }}
-							</a>
-						</li>
-					{{ end }}
-				</ul>
-			{{ end }}			
+				{{ if .Children }}
+					<ul class="{{ $type }}__sub">
+						{{ range .Children }}
+							<li class="{{ $type }}__item">
+								<a href="{{ absURL .URL }}">
+									{{ .Name }}
+								</a>
+							</li>
+						{{ end }}
+					</ul>
+				{{ end }}			
 
-		</li>
+			</li>
 		{{ end }}
 
 	</ul>

@@ -1,0 +1,10 @@
+{{ define "main" }}
+
+{{ range where .Pages "Params.tags" "intersect" (slice "tag1" "tag2") }}
+  <br>+{{ .Title }}
+{{ end }}
+
+{{/* Services section */}}
+{{- partial "section/entries.html" ( dict "context" . "data" "services" ) -}}
+
+{{ end }}

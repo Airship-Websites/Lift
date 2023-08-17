@@ -173,11 +173,6 @@ h5 {
 	.page--home & {
 		font-size: calc($fz-h1 + 0.2rem);
 	}
-
-	/* Search page */
-	.search & {
-		font-size: calc($fz-h1 - 0.2rem);
-	}
 }
 
 .subtitle {
@@ -186,6 +181,15 @@ h5 {
 	font-weight: $fw;
 	line-height: $lh-heading;
 	margin-top: 1rem;
+	text-wrap: balance;
+}
+
+.supertitle {
+	color: $c-title;
+	font-size: 1.1rem;
+	font-weight: $fw;
+	margin-bottom: 0.4rem !important;
+	text-transform: uppercase;
 }
 
 /* Content blocks
@@ -857,7 +861,7 @@ ul.links {
 	}
 
 	&--current:not(.nav__item:last-of-type) > a {
-		color: $c-nav-active;
+		background: $bg-nav-current;
 	}
 }
 
@@ -1152,7 +1156,7 @@ ul.links {
 }
 
 .footer {
-	/* The 'background-image' property is set inline by WordPress theme. */
+	/* The 'background-image' property is set in 'footer.html'. */
 	@include background-image($bg-footer );
 	color: $c-footer;
 	text-align: center;
@@ -1332,6 +1336,7 @@ ul.links {
 	/* More link */
 	&__link {
 		@include link-small;
+		font-weight: $fw-bold;
 	}
 
 	/* Image left of content */
@@ -1386,8 +1391,14 @@ ul.links {
 --------------------------------------------------------------*/
 
 .section {
-	.wrap {
+	> .wrap {
 		@include section-space;
+	}
+
+	.section {
+		@include force-full-width;
+		@include section-margin-top;
+		@include section-margin-bottom;
 	}
 
 	&__title {
@@ -1406,6 +1417,7 @@ ul.links {
 		margin-bottom: $space-section;
 		margin-top: -1.6rem;
 		text-align: center;
+		text-wrap: balance;
 	}
 
 	&__footer {
@@ -1422,7 +1434,7 @@ ul.links {
 ----------------------------------*/
 
 .section--basic {
-	.wrap {
+	> .wrap {
 		/* 6 columns */
 		@include section-width(6);
 	}
@@ -1433,7 +1445,7 @@ ul.links {
 
 .section--row {
 	@media (min-width: $tablet ) {
-		.wrap {
+		> .wrap {
 			@include flexbox(row, nowrap, space-between, center);
 		}
 
@@ -1493,12 +1505,48 @@ ul.links {
 	@include grid-side-image(right, section, 2fr 1fr);
 }
 
+/* Aside section
+----------------------------------*/
+
+/* CSS Grid */
+.section--aside {
+	> .wrap {
+		@include grid( 12, $desktop );
+		@include grid-rows-collapse;
+	
+		> * {
+			grid-column: span 8;
+		}
+	}
+	
+	/* Aside */
+	.section__aside {
+		grid-column: 9 / span 4;
+		grid-row: 1;
+	}
+}
+
+/* Aside */
+.section__aside {
+	@media ( max-width: $_desktop ) {
+		@include force-full-width;
+		margin-bottom: calc( $space-section * -1 );
+		margin-top: $space-section;
+		padding-bottom: $space-section;
+		padding-top: $space-section;
+		
+		> * {
+			@include section-width;
+		}
+	}
+}
+
 /* CTA section
 ----------------------------------*/
 
 /* One row */
 .section--cta-row {
-	.wrap > * {
+	> .wrap > * {
 		margin: 0;
 	}
 
@@ -1507,7 +1555,7 @@ ul.links {
 	}
 
 	@media (min-width: $desktop ) {
-		.wrap {
+		> .wrap {
 			@include flexbox(row, nowrap, space-between, center);
 		}
 
@@ -1519,7 +1567,7 @@ ul.links {
 
 /* Full */
 .section--cta-full {
-	.wrap > * {
+	> .wrap > * {
 		max-width: 30rem;
 		text-align: left;
 	}
@@ -1837,10 +1885,4 @@ ul.links {
 
 .mw-300 {
 	max-width: 300px;
-}
-
-
-iframe[src*="docs.google.com/forms/d/"] {
-  width: 100%;
-  height: 100vh;
 }

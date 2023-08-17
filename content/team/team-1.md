@@ -1,6 +1,5 @@
 ---
-title: About
-layout: about
+title: Team 1
 
 # PARAMS
 # Meta description
@@ -9,6 +8,10 @@ description_meta:
 header_image: 
 # Footer background image path
 footer_image: 
+# Aside
+aside: |
+  ### Mollis Fermentum
+  Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
 ---
 
 ## Ipsum Fusce Ultricies
@@ -16,13 +19,6 @@ Donec ullamcorper nulla non metus auctor fringilla. Nullam id dolor id nibh ultr
 
 ### Mollis Fermentum
 Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-
-{{< section
-	type="services"
-	tag_filter=""
-	class="bg--light"
-	title=""
->}}
 
 #### Adipiscing Ornare Cras
 Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.

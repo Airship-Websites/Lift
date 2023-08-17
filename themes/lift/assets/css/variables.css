@@ -67,7 +67,7 @@ $c-link:              color( $c-brand lightness( -10 ) saturation( +5 ) );
 $c-link-hover:        color( $c-link lightness( +5 ) );
 $c-nav:               $c-text;
 $c-nav-hover:         color( $c-brand lightness( -5 ) saturation( +5 ) );
-$c-nav-active:        $c-nav-hover;
+$bg-nav-current:      $c-medium;
 $c-post-nav:          $c-heading;
 $c-post-nav-hover:    $c-brand;
 $c-meta-link:         $c-meta;
@@ -131,10 +131,10 @@ $ff:         'Open Sans', sans-serif;
 $ff-heading: $ff;
 
 $fz:        1rem;
-$fz-title:  calc( $fz + 2.1rem );
-$fz-h1:     calc( $fz + 1.6rem );
-$fz-h2:     calc( $fz + 1.1rem );
-$fz-h3:     calc( $fz + 0.6rem );
+$fz-title:  calc( $fz + 1.9rem );
+$fz-h1:     calc( $fz + 1.3rem );
+$fz-h2:     calc( $fz + 0.9rem );
+$fz-h3:     calc( $fz + 0.5rem );
 $fz-h4:     calc( $fz + 0.1rem );
 $fz-h5:     $fz;
 $fz-small:  calc( $fz - 0.15rem );
@@ -163,7 +163,7 @@ $space-heading-top: calc( $space-heading * 2 );
 --------------------------------------------------------------*/
 
 $w-column:  100px;
-$gap:       1.8rem;
+$gap:       2.5rem;
 $maxw:      calc( 12 * ( $w-column + $gap ) - $gap );
 
 $h-masthead: 4.2rem;

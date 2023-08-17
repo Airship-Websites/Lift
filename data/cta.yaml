@@ -1,12 +1,12 @@
 link:
-  text: Contact us
+  text: Contact Us
   url: /contact
 class: bg--dark
 entries:
-  - title: Invite customers to connect
+  - title: Invite Customers To Connect
     subtitle: Some subtitle…
     link:
       text: Some label
       url: /about
-  - title: Another title
-  - title: Yet another title
+  - title: Another Title
+  - title: Yet Another Title

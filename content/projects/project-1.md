@@ -1,7 +1,5 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
-draft: true
+title: Project 1
 
 # PARAMS
 # Meta description
@@ -11,3 +9,5 @@ header_image:
 # Footer background image path
 footer_image: 
 ---
+
+Project 1 markdown content…

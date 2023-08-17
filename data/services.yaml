@@ -8,19 +8,19 @@ class:
   entry: entry--small
   figure: graphic
 entries:
-  - title: Fermentum fringilla
+  - title: Fermentum Fringilla
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/money.svg
-    link: /benefits
-  - title: Purus consectetur
+    link: /services/service-1
+  - title: Purus Consectetur
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/laptop.svg
-    link: /benefits
-  - title: Dapibus risus
+    link: /services/service-2
+  - title: Dapibus Risus
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/like.svg
-    link: /benefits
+    link: /services/service-3
   - title: Mollis Ffermentum
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
     image: /svg/chat.svg
-    link: /benefits
+    link: /services/service-4
