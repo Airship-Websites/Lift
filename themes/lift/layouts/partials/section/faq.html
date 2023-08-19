@@ -5,8 +5,10 @@
 {{ with index $context.Site.Data $data }}
 <section class="section section--faq {{ $class }}">
 	<div class="wrap">
-		<h2 class="section__title">{{ .title }}</h2>
-		<div class="faq">
+		<div class="section__header">
+			<h2 class="section__title">{{ .title }}</h2>
+		</div>
+		<div class="section__content faq">
 		{{ range .entries }}
 			<article class="faq__entry">
 				<h3 class="faq__q">{{ .question}}</h3>

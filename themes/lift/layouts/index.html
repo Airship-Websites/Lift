@@ -13,9 +13,10 @@
 {{- partial "section/video.html" ( dict "context" . "data" "video" "class" "bg--medium" ) -}}
 
 {{/* Call-to-action section */}}
+{{ $data := index .Site.Data "cta" 0 }}
 {{- partial "section/cta.html" ( dict
 	"context" .
-	"data" "cta"
+	"data" $data
 	"class_layout" "section--cta-row"
 	"class_bg" "bg--dark"
 ) -}}

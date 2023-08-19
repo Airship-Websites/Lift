@@ -10,6 +10,10 @@ description_meta:
 class_page: home
 # Subtitle
 subtitle: Starter theme for small business websites.
+# Call-to-action
+cta:
+  text: Contact Us
+  url: /contact
 # Header background image path
 header_image: 
 # Footer background image path

@@ -30,7 +30,7 @@
 			<h1 class="title">{{ .Title }}</h1>
 			<p class="subtitle">{{ .Params.subtitle }}</p>
 			<div>
-				<a class="button button--secondary" href="{{ absURL .Site.Data.cta.link.url }}">{{ .Site.Data.cta.link.text }}</a>
+				<a class="button button--secondary" href="{{ absURL .Params.cta.url }}">{{ .Params.cta.text }}</a>
 			</div>
 
 		{{/*  Other pages header  */}}

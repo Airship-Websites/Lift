@@ -1401,12 +1401,17 @@ ul.links {
 		@include section-margin-bottom;
 	}
 
+	&__header {
+		margin-bottom: $space-section;
+		text-align: center;
+		text-wrap: balance;
+	}
+	
 	&__title {
 		@include heading(h1);
-		margin-bottom: 2.4rem;
+		margin-bottom: 0;
 		/* Offset the top line-height spacing */
 		margin-top: -0.5rem;
-		text-align: center;
 	}
 
 	&__subtitle {
@@ -1414,10 +1419,7 @@ ul.links {
 		font-size: $fz-large;
 		font-weight: $fw;
 		line-height: $lh-heading;
-		margin-bottom: $space-section;
-		margin-top: -1.6rem;
-		text-align: center;
-		text-wrap: balance;
+		margin-top: 1rem;
 	}
 
 	&__footer {
@@ -1548,19 +1550,12 @@ ul.links {
 .section--cta-row {
 	> .wrap > * {
 		margin: 0;
-	}
-
-	.section__title {
-		margin-bottom: 1.5rem;
+		text-align: left;
 	}
 
 	@media (min-width: $desktop ) {
 		> .wrap {
 			@include flexbox(row, nowrap, space-between, center);
-		}
-
-		.section__title {
-			margin-bottom: 0;
 		}
 	}
 }
@@ -1574,7 +1569,10 @@ ul.links {
 	
 	.section__title {
 		margin-bottom: 1.5rem;
-		text-align: left;
+	}
+
+	.section__subtitle {
+		margin-bottom: 1.5rem;
 	}
 	
 	.section__footer {

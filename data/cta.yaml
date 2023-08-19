@@ -1,12 +1,10 @@
-link:
-  text: Contact Us
-  url: /contact
-class: bg--dark
-entries:
-  - title: Invite Customers To Connect
-    subtitle: Some subtitle…
-    link:
-      text: Some label
-      url: /about
-  - title: Another Title
-  - title: Yet Another Title
+- title: Invite Customers To Connect
+  subtitle: Some subtitle…
+  link:
+    text: Contact Us
+    url: /contact
+- title: Another Title
+  subtitle: Some subtitle…
+  link:
+    text: Some Label
+    url: /about

@@ -1,7 +1,8 @@
 {{/* Call-to-action section */}}
+{{ $data := index .Site.Data "cta" 0 }}
 {{- partial "section/cta.html" ( dict
 	"context" .
-	"data" "cta"
+	"data" $data
 	"class_layout" "section--cta-full"
 	"class_bg" "bg--dark"
 ) -}}
