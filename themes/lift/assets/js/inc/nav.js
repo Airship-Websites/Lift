@@ -49,72 +49,72 @@ export function toggleOnScroll() {
 		return;
 	}
 
-	// Register GSAP ScrollTrigger plugin
-	gsap.registerPlugin( ScrollTrigger );
+	// create
+	let mm = gsap.matchMedia();
 
-	ScrollTrigger.matchMedia( {
-		// SMALL SCREEN show/hide menu toggle
-		'(max-width: 767px)': function () {
-			classOff = 'nav__toggle-clone--off';
-			distanceFromTop = masthead.offsetHeight + 'px';
+	// SMALL SCREEN show/hide menu toggle
+	mm.add('(max-width: 767px)', () => {
 
-			// Hide initially
-			document.documentElement.classList.add( classOff );
+		classOff = 'nav__toggle-clone--off';
+		distanceFromTop = masthead.offsetHeight + 'px';
 
-			// Show/hide menu toggle when scroll direction changes
-			ScrollTrigger.create( {
-				onLeaveBack: () => document.documentElement.classList.add( classOff ),
-				onUpdate: ( self ) => {
-					// Note: Because onUpdate unexpectedly fires on page load, I use updateCounter and updateMin to prevent onUpdate function from firing then.
-					updateCounter++;
+		// Hide initially
+		document.documentElement.classList.add( classOff );
 
-					// Downward scroll
-					if ( self.direction === 1 && updateCounter > updateMin ) {
-						document.documentElement.classList.add( classOff );
-						// Upward scroll
-					} else if ( self.direction === -1 && updateCounter > updateMin ) {
-						document.documentElement.classList.remove( classOff );
-					}
-				},
-				start: distanceFromTop, // Only run when scrolled past this point
-			} );
-		},
+		// Show/hide menu toggle when scroll direction changes
+		ScrollTrigger.create( {
+			onLeaveBack: () => document.documentElement.classList.add( classOff ),
+			onUpdate: ( self ) => {
+				// Note: Because onUpdate unexpectedly fires on page load, I use updateCounter and updateMin to prevent onUpdate function from firing then.
+				updateCounter++;
 
-		// LARGE SCREEN show/hide masthead
-		'(min-width: 768px)': function () {
-			const classScroll = 'masthead--scroll';
+				// Downward scroll
+				if ( self.direction === 1 && updateCounter > updateMin ) {
+					document.documentElement.classList.add( classOff );
+					// Upward scroll
+				} else if ( self.direction === -1 && updateCounter > updateMin ) {
+					document.documentElement.classList.remove( classOff );
+				}
+			},
+			start: distanceFromTop, // Only run when scrolled past this point
+		} );
+	});
 
-			classOff = 'masthead--off';
-			distanceFromTop = masthead.offsetHeight + 40 + 'px';
+	// LARGE SCREEN show/hide masthead
+	mm.add('(min-width: 768px)', () => {
 
-			// Show/hide masthead hide when scroll direction changes
-			ScrollTrigger.create( {
-				// Change masthead style after scroll from top
-				onEnter: () => {
-					document.documentElement.classList.add( classScroll );
-				},
-				// Revert masthead style after scroll back to top
-				onLeaveBack: () => {
-					document.documentElement.classList.remove( classScroll );
-				},
-				onUpdate: ( self ) => {
-					updateCounter++;
+		const classScroll = 'masthead--scroll';
 
-					// Downward scroll
-					if ( self.direction === 1 && updateCounter > updateMin ) {
-						// Hide masthead (add class to html tag)
-						document.documentElement.classList.add( classOff );
-						// Upward scroll
-					} else if ( self.direction === -1 && updateCounter > updateMin ) {
-						// Show masthead
-						document.documentElement.classList.remove( classOff );
-					}
-				},
-				// Start when scrolled past this point
-				start: distanceFromTop,
-			} );
-		},
-	} );
+		classOff = 'masthead--off';
+		distanceFromTop = masthead.offsetHeight + 40 + 'px';
+
+		// Show/hide masthead hide when scroll direction changes
+		ScrollTrigger.create( {
+			// Change masthead style after scroll from top
+			onEnter: () => {
+				document.documentElement.classList.add( classScroll );
+			},
+			// Revert masthead style after scroll back to top
+			onLeaveBack: () => {
+				document.documentElement.classList.remove( classScroll );
+			},
+			onUpdate: ( self ) => {
+				updateCounter++;
+
+				// Downward scroll
+				if ( self.direction === 1 && updateCounter > updateMin ) {
+					// Hide masthead (add class to html tag)
+					document.documentElement.classList.add( classOff );
+					// Upward scroll
+				} else if ( self.direction === -1 && updateCounter > updateMin ) {
+					// Show masthead
+					document.documentElement.classList.remove( classOff );
+				}
+			},
+			// Start when scrolled past this point
+			start: distanceFromTop,
+		} );
+	});
 }
 
 

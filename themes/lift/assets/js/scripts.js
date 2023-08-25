@@ -6,6 +6,11 @@
  * @since   1.0.0
  */
 
+/* Tell eslint about global variables */
+/* global gsap, ScrollTrigger */
+
+gsap.registerPlugin(ScrollTrigger);
+
 import Toggle from 'js/inc/toggle';
 import Rotate from 'js/inc/rotate';
 import * as Nav from 'js/inc/nav';
