@@ -8,55 +8,30 @@
 
 export default class FAQ {
 	constructor() {
-		// FAQs
-		this.faqs = document.querySelectorAll( '.faq__entry' );
+		// Select all faq entries
+		this.faqs = document.querySelectorAll('.faq__entry');
 
-		// Bail if there's no FAQs
-		if ( ! this.faqs ) {
+		// Bail if there are no faq entries
+		if (! this.faqs.length) {
 			return;
 		}
 
-		this.bindThis();
-		this.activate();
+		// Initialize the faq component
+		this.init();
 	}
 
-	/**
-	 * Bind 'this' to methods
-	 *
-	 * @link https://dev.to/aman_singh/why-do-we-need-to-bind-methods-inside-our-class-component-s-constructor-45bn
-	 */
-	bindThis() {
-		this.doToggle = this.doToggle.bind( this );
+	// Initialize the faq component
+	init() {
+		// Loop through each faq entry
+		this.faqs.forEach((faq) => {
+			// Add a click event listener to toggle the faq entry
+			faq.addEventListener('click', this.toggleFAQ.bind(this, faq));
+		});
 	}
 
-	/**
-	 * Activate FAQs
-	 */
-	activate() {
-		// Loop through FAQs
-		this.faqs.forEach( ( faq ) => {
-			// Toggle the FAQ on click
-			faq.addEventListener( 'click', this.doToggle );
-		} );
-	}
-
-	/**
-	 * Do toggle
-	 */
-	doToggle( event ) {
-		const
-			// FAQ when clicked
-			clickedFAQ = event.currentTarget,
-			// CSS class used to style the 'on' state
-			onClass = 'faq__entry--on';
-
-		// Off (remove class from html tag)
-		if ( clickedFAQ.classList.contains( onClass ) ) {
-			clickedFAQ.classList.remove( onClass );
-
-		// On (add class to html tag)
-		} else {
-			clickedFAQ.classList.add( onClass );
-		}
+	// Toggle the faq entry
+	toggleFAQ(faq) {
+		// Toggle the 'faq__entry--on' class when the faq entry is clicked
+		faq.classList.toggle('faq__entry--on');
 	}
 }
