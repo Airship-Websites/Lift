@@ -1,9 +1,31 @@
 {{ $context := .context }}
-{{ $data := .data }}
+
+{{/* Call-to-action based on current page) */}}
+{{/* @note Uses current content page filename as the lookup key. Defaults to "basic" type. */}}
+{{ $current_page := "basic" }}
+{{ with $context.File }}
+	{{ $current_page = .BaseFileName }}
+{{ end }}
+{{ $cta := where $context.Site.Data.cta "type" $current_page | default (where $context.Site.Data.cta "type" "basic") }}
+{{ $cta = index $cta 0 }}
+
+{{/* Call-to-action background image */}}
+{{ $cta_bg_url := $context.Page.Params.cta_image | default $context.Site.Params.cta_image | absURL }}
+<style type="text/css">
+	.section--cta-full {
+		background-image: url({{ $cta_bg_url }});
+	}
+	@media (min-width: 768px) {
+		.section--cta-full {
+			background-image: url({{ $cta_bg_url }});
+		}
+	}	
+</style>
+
 {{ $class_layout := .class_layout | default "section--cta-row" }}
 {{ $class_bg := .class_bg | default "bg--dark" }}
 
-{{ with .data }}
+{{ with $cta }}
 <section class="section {{ $class_layout }} {{ $class_bg }}">
 	<div class="wrap">
 		<header class="section__header">

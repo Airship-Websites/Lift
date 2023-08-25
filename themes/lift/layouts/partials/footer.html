@@ -1,11 +1,12 @@
-{{/* Call-to-action section */}}
-{{ $data := index .Site.Data "cta" 0 }}
-{{- partial "section/cta.html" ( dict
-	"context" .
-	"data" $data
-	"class_layout" "section--cta-full"
-	"class_bg" "bg--dark"
-) -}}
+{{/* For all pages except Contact */}}
+{{ if ne .Page.RelPermalink "/contact/" }}
+	{{/* Call-to-action section */}}
+	{{- partial "section/cta.html" ( dict
+		"context" .
+		"class_layout" "section--cta-full"
+		"class_bg" "bg--dark"
+	) -}}
+{{ end }}
 
 {{ $footer_bg_url := .Page.Params.footer_image | default .Site.Params.footer_image | absURL }}
 <style type="text/css">

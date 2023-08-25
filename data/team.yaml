@@ -6,6 +6,7 @@ link:
   url: /team
 class:
   entries: entries--3
+  entry: entry--center
   figure: circle
 entries:
   - title: Anna Pierce

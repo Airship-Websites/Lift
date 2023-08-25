@@ -68,3 +68,5 @@ params:
   header_image: images/header.jpg
   # Footer background image path
   footer_image: images/footer.jpg
+  # Call-to-action background image path
+  cta_image: images/cta.jpg  

@@ -1,6 +1,5 @@
 ---
-title: Contact
-
+title: Contact Us
 layout: contact
 
 # PARAMS
@@ -11,5 +10,10 @@ header_image:
 # Footer background image path
 footer_image: 
 # Form message
-message: Thank you for your message! We will get back to you soon.
+message: |
+  **Thank you for your message!** We will get back to you soon.
 ---
+
+Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Vestibulum id ligula porta felis euismod semper.
+
+Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam [name@company.com](mailto:name@company.com).

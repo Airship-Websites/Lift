@@ -1,10 +1,6 @@
-- title: Invite Customers To Connect
-  subtitle: Some subtitle…
+- type: basic
+  title: Invite Customers To Connect
+  subtitle: 
   link:
     text: Contact Us
     url: /contact
-- title: Another Title
-  subtitle: Some subtitle…
-  link:
-    text: Some Label
-    url: /about

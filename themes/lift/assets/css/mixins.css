@@ -70,7 +70,6 @@ TABLE OF CONTENTS
 	line-height: $lh-heading;
 	margin-bottom: $space-heading;
 	margin-top: 0;
-	text-wrap: balance;
 
 	@if $level == h1 {
 		font-size: $fz-h1;
@@ -94,7 +93,7 @@ TABLE OF CONTENTS
 
 	a {
 		color: $c-heading;
-		text-decoration: none;
+		text-decoration: none !important;
 	}
 }
 
@@ -282,6 +281,7 @@ TABLE OF CONTENTS
 @mixin label( $display: inline ) {
 	font-size: $fz-label;
 	font-weight: $fw-bold;
+	text-transform: uppercase;
 
 	@if $display == block {
 		clear: both;
@@ -347,7 +347,9 @@ TABLE OF CONTENTS
 
 @mixin link-small {
 	font-size: $fz-small;
-	text-decoration: none;
+	font-weight: $fw-bold;
+	margin-left: 0.2em;
+	text-decoration: underline !important;
 	text-transform: uppercase;
 	white-space: nowrap;
 }
@@ -378,6 +380,14 @@ TABLE OF CONTENTS
 @mixin notice {
 	@include box( $bg-notice );
 	color: $c-notice;
+
+	p + & {
+		margin-top: 2.5rem;
+	}
+
+	strong {
+		color: $c-notice-strong;
+	}
 
 	a {
 		@include link( $c-notice, $c-notice-hover );
