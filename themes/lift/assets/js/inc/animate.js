@@ -15,29 +15,38 @@
 /**
  * Ken Burns effect on image when it's scrolled into view.
  */
-export const kenBurnsEffect = () => {
-	const element = document.querySelector( '.js-kbe' );
+export const kenBurnsEffect = (options = {}) => {
+	const {
+		// Default settings
+		selector = '.js-kbe',
+		zoomedOut = '112%',
+		duration = 7,
+	} = options;
 
-	// Bail if there's no element
-	if ( ! element ) {
+	const elements = document.querySelectorAll(selector);
+
+	// Bail if there are no elements
+	if (! elements.length) {
 		return;
 	}
 
 	let mm = gsap.matchMedia();
 
-	mm.add( '(min-width: 992px)', () => {
+	elements.forEach(element => {
+		mm.add( '(min-width: 992px)', () => {
 
-		gsap.fromTo( element, {
-			backgroundSize: '120%',
-		}, {
-			backgroundSize: '100%',
-			duration: 7,
-			scrollTrigger: {
-				trigger: element,
-				start: 'top bottom',
-				end: 'bottom top',
-				toggleActions: 'play reset play reset',
-			},
+			gsap.fromTo( element, {
+				backgroundSize: zoomedOut,
+			}, {
+				backgroundSize: '100%',
+				duration: duration,
+				scrollTrigger: {
+					trigger: element,
+					start: 'top bottom',
+					end: 'bottom top',
+					toggleActions: 'play reset play reset',
+				},
+			} );
 		} );
-	} );
+	});
 };

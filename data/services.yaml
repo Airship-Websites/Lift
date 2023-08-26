@@ -5,22 +5,22 @@ link:
   url: /services
 class:
   entries: entries--3
-  entry: entry--small
-  figure: graphic
+  entry: 
+  figure: 
 entries:
   - title: Fermentum Fringilla
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
-    image: /svg/money.svg
+    image: /images/service.svg
     link: /services/service-1
   - title: Purus Consectetur
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
-    image: /svg/laptop.svg
+    image: /images/service.svg
     link: /services/service-2
   - title: Dapibus Risus
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
-    image: /svg/like.svg
+    image: /images/service.svg
     link: /services/service-3
   - title: Mollis Ffermentum
     text: Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel…
-    image: /svg/chat.svg
+    image: /images/service.svg
     link: /services/service-4
