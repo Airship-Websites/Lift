@@ -17,6 +17,7 @@ TABLE OF CONTENTS
 # Border
 # Box
 # Button
+# Card
 # Form
 # Frame
 # Link
@@ -51,7 +52,7 @@ TABLE OF CONTENTS
 
 @mixin title {
 	color: $c-title;
-	font-family: $ff-heading;
+	font-family: $ff-title;
 	font-size: $fz-title;
 	font-weight: $fw-heading;
 	margin-bottom: 0;
@@ -81,6 +82,7 @@ TABLE OF CONTENTS
 
 	@if $level == h3 {
 		font-size: $fz-h3;
+		text-transform: uppercase;
 	}
 
 	@if $level == h4 {
@@ -168,9 +170,9 @@ TABLE OF CONTENTS
 	color: $c-button;
 	cursor: pointer;
 	display: inline-block;
-	font-family: $ff-heading;
+	font-family: $ff-button;
 	font-size: $fz-button;
-	font-weight: $fw-heading;
+	font-weight: $fw-button;
 	line-height: $lh-button;
 	padding: $p-button;
 	text-align: center;
@@ -262,6 +264,27 @@ TABLE OF CONTENTS
 }
 
 /*--------------------------------------------------------------
+# Card
+--------------------------------------------------------------*/
+
+@mixin card( $bg: false ) {
+	@if $bg {
+		background-color: $bg;
+	} @else {
+		background-color: $bg-box;
+	}
+
+	box-shadow: $bxsh;
+	padding: $p-box;
+
+	.entry__image {
+		margin-left: -$p-box;
+		margin-right: -$p-box;
+		margin-top: -$p-box;
+	}
+}
+
+/*--------------------------------------------------------------
 # Form
 --------------------------------------------------------------*/
 
@@ -335,13 +358,23 @@ TABLE OF CONTENTS
 	}
 }
 
-@mixin link-incognito {
+@mixin link-uncolor {
 	color: $c-text;
 
 	&:hover,
 	&:focus,
 	&:active {
 		color: $c-link;
+	}
+}
+
+@mixin link-unline {
+	text-decoration: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: underline;
 	}
 }
 
@@ -358,7 +391,25 @@ TABLE OF CONTENTS
 # Nav
 --------------------------------------------------------------*/
 
-@mixin nav__item-spacing {
+@mixin nav-item( $hover: true ) {
+	color: $c-nav;
+	display: block;
+	font-family: $ff-nav;
+	font-weight: $fw-nav;
+	font-size: $fz-nav;
+	line-height: 1;
+	text-transform: uppercase;
+
+	@if $hover {
+		&:hover,
+		&:focus,
+		&:active {
+			color: $c-nav-active;
+		}	
+	}
+}
+
+@mixin nav-item-spacing {
 	line-height: $h-masthead;
 	padding-left: $space-nav-item;
 	padding-right: $space-nav-item;
@@ -414,7 +465,7 @@ TABLE OF CONTENTS
 	right: 0;
 	top: 0;
 	transform: scale( 0.98 );
-	transition: all $trs-menu-mobile;
+	transition: all $trs-menu;
 	visibility: hidden;
 	z-index: $z-popup;
 
@@ -510,9 +561,16 @@ TABLE OF CONTENTS
 # Center child
 --------------------------------------------------------------*/
 
-@mixin center-child {
+@mixin center-child( $direction: horizontal ) {
 	display: grid;
-	place-content: center;
+	
+	@if $direction == horizontal {
+		place-content: center;
+	}
+	
+	@if $direction == vertical {
+		align-content: center;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -530,7 +588,7 @@ TABLE OF CONTENTS
  * $justify: flex-start, flex-end, center, space-between, space-around, space-evenly
  * $align: flex-start, flex-end, center, stretch, baseline
  */
-@mixin flexbox( $direction: row, $wrap: wrap, $justify: flex-start, $align: stretch ) {
+ @mixin flexbox( $direction: row, $wrap: wrap, $justify: flex-start, $align: stretch ) {
 	display: flex;
 	flex-flow: $direction $wrap;
 
@@ -543,14 +601,25 @@ TABLE OF CONTENTS
 	}
 }
 
-@mixin flex-item-width( $count: 3, $space: 0 ) {
-	$width: calc( 100 / $count );
-	$width: $width%;
-
-	@if $space == 0 {
-		width: $width;
+@mixin flex-item-width( $width: 33%, $gap: 0 ) {
+	@if $gap == 0 {
+		flex: 0 0 $width;
 	} @else {
-		width: calc( $width - $space );
+		flex: 0 0 calc( $width - $gap );
+	}
+}
+
+@mixin flex-entries( $width: 33% ) {
+	display: flex;
+	flex-direction: column;
+	gap: $gap;
+
+	@media ( min-width: $tablet ) {
+		@include flexbox(row, wrap, center);
+
+		> * {
+			@include flex-item-width($width, $gap);
+		}		
 	}
 }
 

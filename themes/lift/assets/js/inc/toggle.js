@@ -8,10 +8,9 @@
 
 export default class Toggle {
 	constructor( options ) {
-		// Default settings
 		this.defaults = {
-			// Class used to identify toggle trigger
-			triggerClass:  'js-toggle',
+			// Settings
+			triggerSelector: '.js-toggle', // Toggle trigger element
 		};
 
 		// Update settings
@@ -19,9 +18,9 @@ export default class Toggle {
 
 		// Properties
 		// Trigger elements
-		this.triggers = document.querySelectorAll( `.${ this.settings.triggerClass }` );
+		this.triggers = document.querySelectorAll( this.settings.triggerSelector );
 
-		// Bail if there's no elements
+		// Bail if no elements
 		if ( ! this.triggers ) {
 			return;
 		}

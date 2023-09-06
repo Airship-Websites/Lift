@@ -1,6 +1,5 @@
-{{/* For all pages except Contact */}}
+{{/* Call-to-action section on all pages except Contact */}}
 {{ if ne .Page.RelPermalink "/contact/" }}
-	{{/* Call-to-action section */}}
 	{{- partial "section/cta.html" ( dict
 		"context" .
 		"class_layout" "section--cta-full"
@@ -24,7 +23,7 @@
 		<div class="footer__area">
 
 			{{/* Brand */}}
-			{{- partial "brand.html" . -}}
+			{{- partial "brand.html" ( dict "context" . "type" "white" ) -}}
 
 			{{/* Contact */}}
 			{{- partial "contact.html" .Site.Data.company -}}

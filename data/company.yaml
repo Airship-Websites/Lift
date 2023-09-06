@@ -1,9 +1,8 @@
 name: Lift
 
 # Brand
-logo:
-  url: /images/logo.svg
-  alt: Lift logo
+logo: /images/logo.svg
+logo_white: /images/logo-white.svg
 
 # Contact
 phone: 555-555-555

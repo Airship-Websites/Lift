@@ -10,7 +10,11 @@
 {{- partial "section/entries.html" ( dict "context" . "data" "benefits" ) -}}
 
 {{/* Video section */}}
-{{- partial "section/video.html" ( dict "context" . "data" "video" "class" "bg--medium" ) -}}
+{{- partial "section/video.html" ( dict
+	"context" .
+	"data" "video"
+	"class" "bg--medium"
+) -}}
 
 {{/* Call-to-action section */}}
 {{ $data := index .Site.Data "cta" 0 }}
@@ -22,7 +26,11 @@
 ) -}}
 
 {{/* Services section */}}
-{{- partial "section/entries.html" ( dict "context" . "data" "services" ) -}}
+{{- partial "section/entries.html" ( dict
+	"context" .
+	"data" "services"
+	"class" "bg--dimension"
+) -}}
 
 {{/* Team section */}}
 {{- partial "section/entries.html" ( dict "context" . "data" "team" ) -}}

@@ -16,7 +16,7 @@
 	w[l] = w[l] || [];
 	w[l].push({
 	'gtm.start': new Date().getTime(),
-	'id': '{{ .Site.Params.gtm }}',
+	'id': '{{ .Site.Data.private.gtm_id }}',
 	});
 	var f = d.getElementsByTagName(s)[0],
 	j = d.createElement(s);

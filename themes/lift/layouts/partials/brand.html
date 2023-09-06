@@ -1,6 +1,16 @@
-<div class="brand">
-	<a href="/" rel="home">
-		<img class="brand__logo" src="{{ .Site.Data.company.logo.url }}" alt="{{ .Site.Data.company.name }}">
+{{ $context := .context }}
+{{ $type := .type }}
+{{ $src := "" }}
+
+{{ with $context }}
+	{{ if eq $type "white" }}
+		{{ $src = .Site.Data.company.logo_white }}
+	{{ else }}
+		{{ $src = .Site.Data.company.logo }}
+	{{ end }}
+
+	<a class="brand" href="/" rel="home">
+		<img class="brand__logo" src="{{ $src }}" alt="{{ .Site.Data.company.name }}">
 		<h1 class="brand__name">{{ .Site.Data.company.name }}</h1>
 	</a>
-</div>
+{{ end }}

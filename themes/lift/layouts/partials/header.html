@@ -2,7 +2,7 @@
 	<div class="wrap">
 
 		{{/* Brand */}}
-		{{- partial "brand.html" . -}}
+		{{- partial "brand.html" ( dict "context" . ) -}}
 
 		{{/* Nav */}}
 		{{- partial "nav.html" ( dict "context" . "menu_id" "main" ) -}}
@@ -29,9 +29,7 @@
 		{{ if .IsHome }}
 			<h1 class="title">{{ .Title }}</h1>
 			<p class="subtitle">{{ .Params.subtitle }}</p>
-			<div>
-				<a class="button button--secondary" href="{{ absURL .Params.cta.url }}">{{ .Params.cta.text }}</a>
-			</div>
+			<a class="button button--big" href="{{ absURL .Params.cta.url }}">{{ .Params.cta.text }}</a>
 
 		{{/*  Other pages header  */}}
 		{{ else }}

@@ -15,11 +15,11 @@ export default class Rotate {
 		// Default settings
 		this.defaults = {
 			// Class used to identify container
-			containerClass: 'js-rotate',
+			selector: '.js-rotate',
 			// Class used to identify item
-			itemClass:      'js-rotate__item',
+			itemSelector: '.js-rotate__item',
 			// Time (seconds) to display each item
-			displayTime:    7,
+			displayTime: 7,
 			// Time (seconds) to transition to next item
 			transitionTime: 0.7,
 		};
@@ -29,9 +29,9 @@ export default class Rotate {
 
 		// Properties
 		// Container elements
-		this.containers = document.querySelectorAll( `.${ this.settings.containerClass }` );
+		this.containers = document.querySelectorAll( this.settings.selector );
 
-		// Bail if there's no elements
+		// Bail if no elements
 		if ( ! this.containers ) {
 			return;
 		}
@@ -57,7 +57,7 @@ export default class Rotate {
 		this.containers.forEach( ( container ) => {
 			const
 				// Items being rotated into view
-				rotatingItems  = container.querySelectorAll( `.${ this.settings.itemClass }` ),
+				rotatingItems  = container.querySelectorAll( this.settings.itemSelector ),
 				numItems       = rotatingItems.length,
 				staggerTime    = this.settings.displayTime + this.settings.transitionTime,
 				repeatDelay    = ( staggerTime * ( numItems - 1 ) ) + this.settings.displayTime,

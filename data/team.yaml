@@ -5,7 +5,7 @@ link:
   text: View All
   url: /team
 class:
-  entries: entries--3
+  entries: entries--3-center
   entry: entry--center
   figure: circle
 entries:

@@ -18,8 +18,9 @@ export function cloneMenuToggle() {
 	const menuToggle = document.querySelector( '.js-nav__toggle' ),
 		menuToggleClone = menuToggle.cloneNode( true );
 
-	// Insert clone after original
-	menuToggle.after( menuToggleClone );
+	// Insert clone at the bottom of the page
+	const pageElement = document.querySelector('.page');
+	pageElement.appendChild(menuToggleClone);
 
 	// Update class names
 	menuToggleClone.className = '';
@@ -31,113 +32,138 @@ export function cloneMenuToggle() {
 	} );
 }
 
+
 /**
- * Show/hide masthead and site menu button on scroll
+ * Show/hide masthead on scroll
  */
-export function toggleOnScroll() {
-	const
-		masthead = document.querySelector( '.js-masthead' ),
-		updateMin = 3;
+export function showHideMasthead() {
+	const MASTHEAD = document.querySelector( '.js-masthead' );
 
-	let // CSS class used to style the 'off' state
-		classOff,
-		distanceFromTop,
-		updateCounter = 0;
-
-	// Bail if there's no elements
-	if ( ! masthead ) {
+	// Bail if no masthead
+	if ( ! MASTHEAD ) {
 		return;
 	}
 
-	// create
-	let mm = gsap.matchMedia();
+	const
+		// Settings
+		CLASS_OFF = 'masthead--off', // CSS class used to style the 'off' state
+		CLASS_SCROLL = 'masthead--scroll', // CSS class used to indicate page has scrolled
+		BREAKPOINT = 700,
+		DISTANCE_FROM_TOP = MASTHEAD.offsetHeight + 40 + 'px',
+		UPDATE_MIN = 3;
 
-	// SMALL SCREEN show/hide menu toggle
-	mm.add('(max-width: 767px)', () => {
+	let
+		updateCounter = 0,
+		mm = gsap.matchMedia();
 
-		classOff = 'nav__toggle-clone--off';
-		distanceFromTop = masthead.offsetHeight + 'px';
+	// Taller screens only
+	mm.add(`(min-height: ${BREAKPOINT}px)`, () => {
 
-		// Hide initially
-		document.documentElement.classList.add( classOff );
-
-		// Show/hide menu toggle when scroll direction changes
+		// Show/hide masthead when scroll direction changes
 		ScrollTrigger.create( {
-			onLeaveBack: () => document.documentElement.classList.add( classOff ),
-			onUpdate: ( self ) => {
-				// Note: Because onUpdate unexpectedly fires on page load, I use updateCounter and updateMin to prevent onUpdate function from firing then.
-				updateCounter++;
-
-				// Downward scroll
-				if ( self.direction === 1 && updateCounter > updateMin ) {
-					document.documentElement.classList.add( classOff );
-					// Upward scroll
-				} else if ( self.direction === -1 && updateCounter > updateMin ) {
-					document.documentElement.classList.remove( classOff );
-				}
-			},
-			start: distanceFromTop, // Only run when scrolled past this point
-		} );
-	});
-
-	// LARGE SCREEN show/hide masthead
-	mm.add('(min-width: 768px)', () => {
-
-		const classScroll = 'masthead--scroll';
-
-		classOff = 'masthead--off';
-		distanceFromTop = masthead.offsetHeight + 40 + 'px';
-
-		// Show/hide masthead hide when scroll direction changes
-		ScrollTrigger.create( {
-			// Change masthead style after scroll from top
+			// Page has been scrolled past the 'start'
 			onEnter: () => {
-				document.documentElement.classList.add( classScroll );
+				document.documentElement.classList.add( CLASS_SCROLL );
 			},
-			// Revert masthead style after scroll back to top
+			// Page has been scrolled back to the 'start'
 			onLeaveBack: () => {
-				document.documentElement.classList.remove( classScroll );
+				document.documentElement.classList.remove( CLASS_SCROLL );
 			},
+			// Note: Because onUpdate unexpectedly fires on page load, I use updateCounter and updateMin to prevent onUpdate function from firing then.
 			onUpdate: ( self ) => {
 				updateCounter++;
 
 				// Downward scroll
-				if ( self.direction === 1 && updateCounter > updateMin ) {
-					// Hide masthead (add class to html tag)
-					document.documentElement.classList.add( classOff );
-					// Upward scroll
-				} else if ( self.direction === -1 && updateCounter > updateMin ) {
+				if ( self.direction === 1 && updateCounter > UPDATE_MIN ) {
+					// Hide masthead
+					document.documentElement.classList.add( CLASS_OFF );
+				// Upward scroll
+				} else if ( self.direction === -1 && updateCounter > UPDATE_MIN ) {
 					// Show masthead
-					document.documentElement.classList.remove( classOff );
+					document.documentElement.classList.remove( CLASS_OFF );
 				}
 			},
 			// Start when scrolled past this point
-			start: distanceFromTop,
+			start: DISTANCE_FROM_TOP,
 		} );
+	});
+
+	// Ensure masthead is visible after window resize
+	window.addEventListener('resize', () => {
+		if (window.innerHeight < BREAKPOINT) {
+			document.documentElement.classList.remove(CLASS_OFF);
+		}
 	});
 }
 
+/**
+ * Show/hide site menu toggle button on scroll
+ */
+export function showHideMenuToggle() {
+	const	MASTHEAD = document.querySelector( '.js-masthead' );
+
+	// Bail if no masthead
+	if ( ! MASTHEAD ) {
+		return;
+	}
+
+	const
+		// Settings
+		CLASS_OFF = 'nav__toggle-clone--off',
+		BREAKPOINT = 767,
+		DISTANCE_FROM_TOP = MASTHEAD.offsetHeight + 'px',
+		UPDATE_MIN = 3;
+
+	let
+		updateCounter = 0,
+		mm = gsap.matchMedia();
+
+	// Smaller screens only
+	mm.add(`(max-width: ${BREAKPOINT}px)`, () => {
+
+		// Hide initially
+		document.documentElement.classList.add( CLASS_OFF );
+
+		// Show/hide menu toggle when scroll direction changes
+		ScrollTrigger.create( {
+			// Page has been scrolled back to the 'start'
+			onLeaveBack: () => document.documentElement.classList.add( CLASS_OFF ),
+			// Note: Because onUpdate unexpectedly fires on page load, I use updateCounter and updateMin to prevent onUpdate function from firing then.
+			onUpdate: ( self ) => {
+				updateCounter++;
+
+				// Downward scroll
+				if ( self.direction === 1 && updateCounter > UPDATE_MIN ) {
+					// Hide menu toggle
+					document.documentElement.classList.add( CLASS_OFF );
+					// Upward scroll
+				} else if ( self.direction === -1 && updateCounter > UPDATE_MIN ) {
+					// Show menu toggle
+					document.documentElement.classList.remove( CLASS_OFF );
+				}
+			},
+			start: DISTANCE_FROM_TOP, // Only run when scrolled past this point
+		} );
+	});
+}
 
 /**
  * Animate the menu toggle button on click.
  */
 export function animateMenuToggle() {
 	const
-		menuToggle = document.querySelector( '.js-nav__toggle' ),
-		menuBar1   = menuToggle.querySelector( 'rect:nth-child(1)' ),
-		menuBar2   = menuToggle.querySelector( 'rect:nth-child(2)' ),
-		menuBar3   = menuToggle.querySelector( 'rect:nth-child(3)' ),
-		menuBar4   = menuToggle.querySelector( 'rect:nth-child(4)' );
-
-	// Bail if there's no element
-	if ( ! menuToggle ) {
-		return;
-	}
+		// Settings
+		MENU_TOGGLE = document.querySelector( '.js-nav__toggle' ),
+		MENU_BAR_1  = MENU_TOGGLE.querySelector( 'rect:nth-child(1)' ),
+		MENU_BAR_2  = MENU_TOGGLE.querySelector( 'rect:nth-child(2)' ),
+		MENU_BAR_3  = MENU_TOGGLE.querySelector( 'rect:nth-child(3)' ),
+		MENU_BAR_4  = MENU_TOGGLE.querySelector( 'rect:nth-child(4)' ),
+		DURATION    = 0.4;
 
 	// Timeline config
 	const tl = gsap.timeline( {
 		defaults: {
-			duration: 0.4,
+			duration: DURATION,
 			ease: 'power4.inOut',
 		},
 		paused: true,
@@ -146,27 +172,27 @@ export function animateMenuToggle() {
 
 	// Timeline animations
 	tl
-		.to( menuBar1, {
+		.to( MENU_BAR_1, {
 			x: 14,
 			y: -9,
 			scaleX: 0,
 		} )
-		.to( menuBar4, {
+		.to( MENU_BAR_4, {
 			x: 14,
 			y: 9,
 			scaleX: 0,
 		}, 0 )
-		.to( menuBar2, {
+		.to( MENU_BAR_2, {
 			rotation: 45,
 			transformOrigin: '50% 50%',
 		}, 0 )
-		.to( menuBar3, {
+		.to( MENU_BAR_3, {
 			rotation: -45,
 			transformOrigin: '50% 50%',
 		}, 0 );
 
 	// Run animation on click
-	menuToggle.addEventListener( 'click', () => {
+	MENU_TOGGLE.addEventListener( 'click', () => {
 		if ( tl.reversed() ) {
 			tl.play();
 		} else {
@@ -180,12 +206,13 @@ export function animateMenuToggle() {
  */
 export function clickOffMenu() {
 	const
-		menuToggle      = document.querySelector( '.js-nav__toggle' ),
-		menuToggleClone = document.querySelector( '.js-nav__toggle-clone' ),
-		menu            = document.querySelector( '.js-nav__menu' );
+		// Settings
+		MENU_TOGGLE       = document.querySelector( '.js-nav__toggle' ),
+		MENU_TOGGLE_CLONE = document.querySelector( '.js-nav__toggle-clone' ),
+		MENU              = document.querySelector( '.js-nav__menu' );
 
-	menuToggle.addEventListener( 'click', stopProp );
-	menuToggleClone.addEventListener( 'click', stopProp );
+	MENU_TOGGLE.addEventListener( 'click', stopProp );
+	MENU_TOGGLE_CLONE.addEventListener( 'click', stopProp );
 
 	function stopProp( event ) {
 		event.stopPropagation();
@@ -193,8 +220,8 @@ export function clickOffMenu() {
 
 	function closeMenu( event ) {
 		// If menu is open then close it
-		if ( ! menu.contains( event.target ) && document.documentElement.classList.contains( 'nav--on' ) ) {
-			menuToggle.click();
+		if ( ! MENU.contains( event.target ) && document.documentElement.classList.contains( 'nav--on' ) ) {
+			MENU_TOGGLE.click();
 		}
 	}
 

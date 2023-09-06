@@ -65,11 +65,6 @@ $c-footer:     color( $c-white a( 80% ) );
 
 $c-link:              color( $c-brand lightness( -10 ) saturation( +5 ) );
 $c-link-hover:        color( $c-link lightness( +5 ) );
-$c-nav:               $c-text;
-$c-nav-hover:         color( $c-brand lightness( -5 ) saturation( +5 ) );
-$bg-nav-current:      $c-medium;
-$c-post-nav:          $c-heading;
-$c-post-nav-hover:    $c-brand;
 $c-meta-link:         $c-meta;
 $c-meta-link-hover:   $c-link;
 $c-footer-link:       color( $c-footer a( +10% ) );
@@ -78,27 +73,28 @@ $c-footer-link-hover: color( $c-footer-link a( +20% ) );
 /* Backgrounds
 ----------------------------------*/
 
-$bg-masthead: color( $c-white a( 97% ) );
-$bg-popup:    color( $c-brand a( 98% ) );
+/* Section background */
+$bg-white:  $c-white;
+$bg-light:  $c-light;
+$bg-medium: $c-medium;
+$bg-dark:   $c-dark;
+$bg-brand:  $c-brand;
+$bg-dimension: linear-gradient(0deg, $bg-medium, color( $bg-medium lightness( -10% )) 80%, $bg-white 80%);
 
 /* Background image overlay */
 $bg-overlay: color( $c-dark a( 70% ) );
 $bg-overlay-reveal: linear-gradient(90deg, hsla( 0, 0%, 30%, 0.8 ) 30%, hsla( 0, 0%, 30%, 0.2 ) 70%);
 
 /* Header background */
-$bg-header:      $bg-overlay;
-
-/* Section background */
-$bg-light:  $c-light;
-$bg-medium: $c-medium;
-$bg-dark:   $c-dark;
-$bg-brand:  $c-brand;
+$bg-header:   $bg-overlay;
+$bg-masthead: color( $c-white a( 97% ) );
 
 /* Footer background */
-$bg-footer: $c-dark;
-
-/* Colophon background */
+$bg-footer:   $c-dark;
 $bg-colophon: color( $bg-footer lightness( -5% ) );
+
+$bg-popup:    color( $c-brand a( 98% ) );
+$bg-box:      $c-white;
 
 /* Notices
 ----------------------------------*/
@@ -123,34 +119,32 @@ $c-twitter:   #55acee;
 ----------------------------------*/
 
 $c-border: hsl( 0, 0%, 83% );
-$c-border-menu-mobile: $c-border;
 
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
 
 $ff:         'Open Sans', sans-serif;
+$ff-title:   $ff;
 $ff-heading: $ff;
 
 $fz:        1rem;
 $fz-title:  calc( $fz + 1.9rem );
 $fz-h1:     calc( $fz + 1.3rem );
 $fz-h2:     calc( $fz + 0.9rem );
-$fz-h3:     calc( $fz + 0.5rem );
+$fz-h3:     calc( $fz + 0.4rem );
 $fz-h4:     calc( $fz + 0.1rem );
 $fz-h5:     $fz;
 $fz-small:  calc( $fz - 0.15rem );
 $fz-medium: calc( $fz + 0.2rem );
 $fz-large:  calc( $fz + 0.6rem );
 $fz-meta:   $fz-small;
-$fz-nav:    18px;
-$fz-nav-mobile: $fz-nav;
 $fz-label:  $fz-meta;
 
 $fw:         400;
+$fw-medium:  500;
 $fw-bold:    700;
 $fw-heading: $fw-bold;
-$fw-nav:     $fw-bold;
 
 $lh:         1.65;
 $lh-large:   1.5;
@@ -173,13 +167,13 @@ $w-submenu:  220px;
 
 $space-list:     0.3rem;
 $space-image:    0.8rem;
-$space-nav-item: 0.8em;
 
-$space-section:     calc( 1.8rem + 2vw );
-$space-block:       1.6rem;
-$space-entry:       3rem;
-$space-gallery:     $space-block;
-$space-border:      2rem;
+$space-section:   calc( 1.8rem + 2vw );
+$unspace-section: calc( -1 * $space-section );
+$space-block:     2rem;
+$space-entry:     3rem;
+$space-gallery:   1.6rem;
+$space-border:    2rem;
 
 $p-box: 1.3rem;
 
@@ -192,17 +186,20 @@ $span-all: span 999;
 /* Button
 ----------------------------------*/
 
-$bg-button:                      $c-action;
-$bg-button-gradient:             color( $bg-button hue( +2 ) lightness( +2% ) );
-$bg-button-hover:                color( $bg-button-gradient hue( -2 ) lightness( +3% ) );
+$c-button:           color( $c-white a( 90% ) );
+$bg-button:          $c-action;
+$bg-button-gradient: color( $bg-button hue( +2 ) lightness( +2% ) );
+$bg-button-hover:    color( $bg-button-gradient hue( -2 ) lightness( +3% ) );
 $bg-button-gradient-transparent: color( $bg-button-gradient a( 0% ) );
 
-$bdrs-button:     2px;
-$c-button:        color( $c-white a( 90% ) );
-$fz-button:       1.1rem;
-$lh-button:       normal; /* For some reason, 'normal' is more consistent than 1 */
-$p-button:        0.8em 0.9em;
+$ff-button: $ff;
+$fz-button: 1.1rem;
+$fw-button: $fw-medium;
+$lh-button: normal; /* For some reason, 'normal' is more consistent than 1 */
+
+$p-button:        0.8em 1em;
 $m-button:        0.6em;
+$bdrs-button:     2px;
 
 $bg-button-footer:       color( $bg-dark a( 90% ) );
 $bg-button-footer-hover: color( $bg-button-footer a( 95% ) );
@@ -221,7 +218,29 @@ $p-field:    $p-button;
 ----------------------------------*/
 
 $c-icon:     currentColor;
+$w-icon:     0.95em;
 $space-icon: 0.4em;
+
+/* Nav
+----------------------------------*/
+
+$c-nav:         $c-brand;
+$c-nav-active:  color( $c-nav lightness( -15% ) );
+$c-nav-submenu: $c-nav-active;
+$bg-submenu:    $c-white;
+$bg-menu:       $c-white;
+$c-border-menu: color( $bg-menu lightness( -10% ) );
+
+$ff-nav:         $ff;
+$fz-nav:         18px;
+$fz-nav-mobile:  $fz-nav;
+$fw-nav:         $fw-bold;
+
+$h-nav:          2.8rem;
+$space-nav-item: 0.8em;
+
+/* @link http://easings.net/#easeInOutQuint */
+$trs-menu: 0.7s cubic-bezier( 0.075, 0.820, 0.165, 1.000 );
 
 /*--------------------------------------------------------------
 # Effects
@@ -233,8 +252,6 @@ $bxsh:        0 0 5px 0 hsla( 0, 0%, 0%, 0.1 );
 $bxsh-on:     0 0 15px 0 hsla( 0, 0%, 0%, 0.13 );
 $tsh:         1px 1px hsla( 0, 0%, 0%, 0.15 );
 $trs:         0.3s;
-/* @link http://easings.net/#easeInOutQuint */
-$trs-menu-mobile: 0.7s cubic-bezier( 0.075, 0.820, 0.165, 1.000 );
 
 /*--------------------------------------------------------------
 # Z-index
@@ -260,5 +277,7 @@ $desktop:       992px;
 $_desktop:      calc( $desktop - 1px );
 $large-desktop: 1200px;
 
-$phone-site-nav:  $phone;
-$_phone-site-nav: calc( $phone-site-nav - 1px );
+/* These values must match the BREAKPOINT values in nav.js */
+$bp-mobile: $tablet;
+$_bp-mobile: calc( $bp-mobile - 1px );
+$bp-mobile-height: 700px;

@@ -55,18 +55,3 @@ menu:
   - name: Contact
     pageRef: /contact
     weight: 40
-
-params:
-  # Google Tag Manager ID
-  gtm: GTM-XXXXXXXX
-  # DEFAULTS
-  # Description for HEAD tags
-  description: Starter theme for small business websites.
-  # The text used for "More" buttons/links
-  more_text: More
-  # Header background image path
-  header_image: images/header.jpg
-  # Footer background image path
-  footer_image: images/footer.jpg
-  # Call-to-action background image path
-  cta_image: images/cta.jpg  
