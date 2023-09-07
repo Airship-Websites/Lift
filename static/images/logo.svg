@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-  <rect width="50" height="50" fill="#999" />
+<svg viewBox="0 0 64 74" xmlns="http://www.w3.org/2000/svg">
+   <polygon fill="hsl(0, 0%, 75%)" points="64 73.8965 32 45.206875 0 73.8965 0 60.862 32 32.172375 64 60.862"></polygon>
+   <polygon fill="hsl(0, 0%, 70%)" points="64 57.862125 32 29.172375 0 57.862125 0 44.827625 32 16.137875 64 44.8275"></polygon>
+   <polygon fill="hsl(0, 0%, 65%)" points="64 41.827625 32 13.137875 0 41.827625 0 28.793125 32 0.1035 64 28.793125"></polygon>
 </svg>

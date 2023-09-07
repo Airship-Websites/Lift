@@ -23,11 +23,14 @@
 	<meta name="robots" content="index,follow">
 	<meta name="HandheldFriendly" content="True">
 
+	<!-- Favicon -->
+	{{- partial "head/favicon.html" . -}}
+
 	<!-- Styles -->
-	{{- partial "styles.html" . -}}
+	{{- partial "head/styles.html" . -}}
 
 	<!-- Scripts -->
-	{{- partial "scripts.html" . -}}
+	{{- partial "head/scripts.html" . -}}
 	
 	<!-- RSS -->
 	{{ with .OutputFormats.Get "rss" -}}
