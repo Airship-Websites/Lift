@@ -53,11 +53,15 @@ TABLE OF CONTENTS
 @mixin title {
 	color: $c-title;
 	font-family: $ff-title;
-	font-size: $fz-title;
+	font-size: calc( $fz-title - 0.3rem );
 	font-weight: $fw-heading;
 	margin-bottom: 0;
 	text-shadow: $tsh;
 	text-wrap: balance;
+
+	@media (min-width: $phone) {
+		font-size: $fz-title;
+	}	
 }
 
 /*--------------------------------------------------------------
