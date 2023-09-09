@@ -82,19 +82,29 @@ $bg-brand:  $c-brand;
 $bg-dimension: linear-gradient(0deg, $bg-medium, color( $bg-medium lightness( -10% )) 80%, $bg-white 80%);
 
 /* Background image overlay */
-$bg-overlay: color( $c-dark a( 70% ) );
-$bg-overlay-reveal: linear-gradient(90deg, hsla( 0, 0%, 30%, 0.8 ) 30%, hsla( 0, 0%, 30%, 0.2 ) 70%);
+$bg-overlay: color( $bg-brand a( 60% ) );
+$bg-overlay-reveal: linear-gradient( 90deg,
+	color( $bg-overlay a( 80% ) ) 40%,
+	color( $bg-overlay a( 20% ) ) 70%
+);
+
+$bg-overlay-light: color( $bg-light a( 60% ) );
+$bg-overlay-light-reveal: linear-gradient( 90deg,
+	color( $bg-overlay-light a( 80% ) ) 40%,
+	color( $bg-overlay-light a( 20% ) ) 60%
+);
 
 /* Header background */
 $bg-header:   $bg-overlay;
-$bg-masthead: color( $c-white a( 97% ) );
+$bg-masthead: color( $bg-white a( 97% ) );
 
 /* Footer background */
-$bg-footer:   $c-dark;
+$bg-footer:   $bg-dark;
 $bg-colophon: color( $bg-footer lightness( -5% ) );
 
-$bg-popup:    color( $c-brand a( 98% ) );
-$bg-box:      $c-white;
+/* Components background */
+$bg-popup:    color( $bg-brand a( 98% ) );
+$bg-box:      $bg-white;
 
 /* Notices
 ----------------------------------*/

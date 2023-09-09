@@ -144,6 +144,10 @@ strong {
 	@include text-large;
 }
 
+.small {
+	font-size: $fz-small;
+}
+
 /* Headings
 ----------------------------------*/
 
@@ -1421,7 +1425,7 @@ ul.links {
 	}
 
 	&__header {
-		margin-bottom: $space-block;
+		@include section-margin-bottom;
 		text-align: center;
 		text-wrap: balance;
 	}
@@ -1443,6 +1447,7 @@ ul.links {
 	}
 
 	&__footer {
+		@include section-margin-top;
 		text-align: center;
 
 		> * {
@@ -1583,6 +1588,14 @@ ul.links {
 .section--cta-full {
 	/* The 'background-image' property is set in 'cta.html'. */
 	@include background-image($bg-overlay );
+
+	.section__header {
+		margin-bottom: $space-block;
+	}
+
+	.section__footer {
+		margin-top: $space-block;
+	}	
 
 	@media (min-width: $tablet ) {
 		&::after {		
@@ -1755,7 +1768,7 @@ ul.links {
 	&__entry {
 		border-top: 1px solid $c-border;
 		cursor: pointer;
-		padding: $space-border 0 $space-border 1rem;
+		padding: 2rem 0 1.5rem 1rem;
 		position: relative;
 		transition: all $trs;
 
@@ -1806,6 +1819,8 @@ ul.links {
 	}
 
 	&__entry--on {
+		padding-bottom: 2rem;
+
 		.faq__q::after {
 			transform: translateY(10px) rotate(180deg);
 		}
