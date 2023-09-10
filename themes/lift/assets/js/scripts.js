@@ -47,6 +47,6 @@ import { toggleFaqs, kenBurnsEffect, pin } from 'js/inc/misc.js';
 	pin();
 
 	// Form handling
-	// handleForm();
+	handleForm();
 
 } )();

@@ -15,18 +15,13 @@ export default function handleForm() {
 	}
 
 	form.addEventListener('submit', function (event) {
-		event.preventDefault();
-
 		if (validateForm()) {
-			const formData = new FormData(form);
-			const data = Object.fromEntries(formData.entries());
-
-			// Send form values to HubSpot CRM (replace with your implementation)
-			sendToHubSpot(data);
-
 			// Scroll to top, hide form and show confirmation message
 			window.scrollTo({ top: 0 });
-			document.documentElement.classList.add( 'form--sent' );
+			document.documentElement.classList.add('form--sent');
+		} else {
+			// Prevent form submission
+			event.preventDefault();
 		}
 	});
 
