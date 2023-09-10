@@ -15,13 +15,22 @@ export default function handleForm() {
 	}
 
 	form.addEventListener('submit', function (event) {
+		event.preventDefault();
+
 		if (validateForm()) {
-			// Scroll to top, hide form and show confirmation message
-			window.scrollTo({ top: 0 });
-			document.documentElement.classList.add('form--sent');
-		} else {
-			// Prevent form submission
-			event.preventDefault();
+			const formData = new FormData(form);
+
+			fetch('/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams(formData).toString(),
+			})
+				.then(() => {
+					// Scroll to top, hide form and show confirmation message
+					window.scrollTo({ top: 0 });
+					document.documentElement.classList.add( 'form--sent' );
+				})
+				.catch((error) => alert(error));
 		}
 	});
 
