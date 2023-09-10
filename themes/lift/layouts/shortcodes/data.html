@@ -1,6 +1,6 @@
 {{/* Usage: {{< data [data filename] [key in data file] >}} */}}
 
-{{ $data := .Get 0 }}
-{{ $key := .Get 1 }}
+{{- $data := .Get 0 -}}
+{{- $key := .Get 1 -}}
 
-{{ index .Site.Data $data $key }}
+{{- index .Site.Data $data $key -}}

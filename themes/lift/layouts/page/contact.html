@@ -1,127 +1,41 @@
 {{ define "main" }}
 	<section class="section section--basic">
 		<div class="wrap">
-			<div class="section__content">
+			<div class="section__content form__initial">
 				{{ .Content }}
-				<div id="confirmationMessage" class="notice" style="display: none;">
-					<p>{{ .Params.message | markdownify }}</p>
-				</div>
-				<form class="form form--contact" id="contactForm">
+				<form class="form form--contact" id="contactForm" netlify>
 					<div class="form__field">
-						<label for="firstName">First Name*</label>
-						<input type="text" id="firstName" name="firstName" placeholder="First name" />
+						<label for="firstName">{{ .Params.first_name_label }}</label>
+						<input type="text" id="firstName" name="firstName" placeholder="{{ .Params.first_name_placeholder }}" />
 						<span class="form__error" id="firstNameError"></span>
 					</div>
 					<div class="form__field">
-						<label for="lastName">Last Name*</label>
-						<input type="text" id="lastName" name="lastName" placeholder="Last name" />
+						<label for="lastName">{{ .Params.last_name_label }}</label>
+						<input type="text" id="lastName" name="lastName" placeholder="{{ .Params.last_name_placeholder }}" />
 						<span class="form__error" id="lastNameError"></span>
 					</div>
 					<div class="form__field">
-						<label for="email">Email*</label>
-						<input type="email" id="email" name="email" placeholder="Your email" />
+						<label for="email">{{ .Params.email_label }}</label>
+						<input type="email" id="email" name="email" placeholder="{{ .Params.email_placeholder }}" />
 						<span class="form__error" id="emailError"></span>
 					</div>
 					<div class="form__field">
-						<label for="phone">Phone</label>
-						<input type="tel" id="phone" name="phone" placeholder="Your phone" />
+						<label for="phone">{{ .Params.phone_label }}</label>
+						<input type="tel" id="phone" name="phone" placeholder="{{ .Params.phone_placeholder }}" />
 						<span class="form__error" id="phoneError"></span>
-					</div>					
+					</div>			
 					<div class="form__field form__field--message">
-						<label for="message">Message</label>
-						<textarea id="message" name="message" placeholder="How can we help?"></textarea>
+						<label for="message">{{ .Params.message_label }}</label>
+						<textarea id="message" name="message" placeholder="{{ .Params.message_placeholder }}"></textarea>
 						<span class="form__error" id="messageError"></span>
 					</div>
 					<input type="submit" value="Submit" />
 				</form>
 			</div>
+			<div class="section__content form__confirmation">
+				{{ .Params.confirmation | markdownify }}
+			</div>			
 		</div>
 		<!-- .wrap -->
 	</section>
-
-	<script>
-		const form = document.getElementById('contactForm');
-		const confirmationMessage = document.getElementById('confirmationMessage');
-
-		form.addEventListener('submit', function (event) {
-			event.preventDefault();
-
-			if (validateForm()) {
-				const formData = new FormData(form);
-				const data = Object.fromEntries(formData.entries());
-
-				// Send form values to HubSpot CRM (replace with your implementation)
-				sendToHubSpot(data);
-
-				// Show confirmation message
-				form.style.display = 'none';
-				confirmationMessage.style.display = 'block';
-			}
-		});
-
-		function validateForm() {
-			let isValid = true;
-
-			const firstNameInput = document.getElementById('firstName');
-			const lastNameInput = document.getElementById('lastName');
-			const emailInput = document.getElementById('email');
-			const phoneInput = document.getElementById('phone');
-			const messageInput = document.getElementById('message');
-
-			const firstNameError = document.getElementById('firstNameError');
-			const lastNameError = document.getElementById('lastNameError');
-			const emailError = document.getElementById('emailError');
-			const phoneError = document.getElementById('phoneError');
-
-			firstNameError.textContent = '';
-			lastNameError.textContent = '';
-			emailError.textContent = '';
-			phoneError.textContent = '';
-
-			if (firstNameInput.value.trim() === '') {
-				firstNameError.textContent = 'Please enter your first name';
-				isValid = false;
-			}
-
-			if (lastNameInput.value.trim() === '') {
-				lastNameError.textContent = 'Please enter your last name';
-				isValid = false;
-			}
-
-			if (emailInput.value.trim() === '') {
-				emailError.textContent = 'Please enter your email';
-				isValid = false;
-			} else if (!isValidEmail(emailInput.value.trim())) {
-				emailError.textContent = 'Please enter a valid email';
-				isValid = false;
-			}
-
-			if (phoneInput.value.trim() !== '') {
-				if (!isValidPhone(phoneInput.value.trim())) {
-					phoneError.textContent = 'Please enter a valid phone';
-					isValid = false;
-				}
-			}
-
-			return isValid;
-		}
-
-		function isValidEmail(email) {
-			// Basic email validation regex
-			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			return emailRegex.test(email);
-		}
-
-		function isValidPhone(phoneNumber) {
-			// Basic phone number validation regex
-			const phoneRegex = /^\d{10}$/; // Assumes a 10-digit phone number format
-			return phoneRegex.test(phoneNumber);
-		}
-
-		function sendToHubSpot(data) {
-			// Implement your code to send data to HubSpot CRM
-			// Example: You can use fetch API or an AJAX request to send data to your server-side code that interacts with HubSpot CRM API.
-			// Make sure you have the necessary authentication and endpoint setup to send data to HubSpot CRM.
-		}
-	</script>
 {{ end }}
