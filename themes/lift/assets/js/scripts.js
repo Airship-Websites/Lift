@@ -12,6 +12,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 import Toggle from 'js/inc/toggle';
+import handleForm from 'js/inc/form';
 import Rotate from 'js/inc/rotate';
 import * as Nav from 'js/inc/nav';
 import { toggleFaqs, kenBurnsEffect, pin } from 'js/inc/misc.js';
@@ -44,5 +45,8 @@ import { toggleFaqs, kenBurnsEffect, pin } from 'js/inc/misc.js';
 
 	// Pin
 	pin();
+
+	// Form handling
+	// handleForm();
 
 } )();

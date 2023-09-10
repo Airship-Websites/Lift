@@ -535,12 +535,29 @@ label {
 	}
 }
 
+.form--sent .form__initial {
+	display: none;
+}
+
+.form__confirmation {
+	display: none;
+
+	.form--sent & {
+		display: block;
+	}
+}
+
 /*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
 
-/* Prevent unexpected horizontal scrollbar */
 .page {
+	/* Force minimum height on main section */
+	display: grid;
+	grid-template-rows: auto 1fr;
+	min-height: 100vh;	
+	
+	/* Prevent unexpected horizontal scrollbar */
 	overflow: hidden;
 	width: 100%;
 }
@@ -1940,20 +1957,6 @@ ul.links {
 /*--------------------------------------------------------------
 # PAGES
 --------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-# Search
---------------------------------------------------------------*/
-
-.search-no-results {
-	.main {
-		text-align: center;
-
-		.search-form {
-			margin: $space-section auto;
-		}
-	}
-}
 
 /*--------------------------------------------------------------
 # 404
