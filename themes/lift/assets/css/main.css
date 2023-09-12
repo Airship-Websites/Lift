@@ -173,10 +173,6 @@ h5 {
 
 .title {
 	@include title;
-
-	.page--home & {
-		font-size: calc($fz-h1 + 0.2rem);
-	}
 }
 
 .subtitle {
@@ -1095,7 +1091,7 @@ ul.links {
 	padding-top: calc($h-masthead + $space-section );
 	text-align: center;
 
-	.page--home & {
+	&--hero {
 		@include center-child;
 		min-height: 36rem;
 		padding-bottom: calc($space-section);
@@ -1108,6 +1104,10 @@ ul.links {
 		.wrap > * {
 			max-width: 30rem;
 		}
+
+		.title {
+			font-size: calc($fz-h1 + 0.2rem);
+		}		
 
 		@media (min-width: $tablet ) {
 			text-align: left;

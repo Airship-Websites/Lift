@@ -7,7 +7,7 @@ title_meta: Starter theme for small business websites.
 # Meta description
 description_meta: 
 # CSS class to identify this page
-class_page: home
+class_page: 
 # Subtitle
 subtitle: Starter theme for small business websites.
 # Call-to-action
