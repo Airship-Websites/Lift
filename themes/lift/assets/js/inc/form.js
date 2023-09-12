@@ -7,7 +7,7 @@
  */
 
 export default function handleForm() {
-	const form = document.getElementById('contactForm');
+	const form = document.querySelector('.js-form');
 
 	// Bail if no form
 	if (! form) {

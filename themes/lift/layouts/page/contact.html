@@ -3,7 +3,9 @@
 		<div class="wrap">
 			<div class="section__content form__initial">
 				{{ .Content }}
-				<form class="form form--contact" id="contactForm" netlify>
+				<form class="form form--contact js-form" name="contact" method="POST" data-netlify="true">
+					<input type="hidden" name="subject" data-remove-prefix
+					value="New inquiry from website" />
 					<div class="form__field">
 						<label for="firstName">{{ .Params.first_name_label }}</label>
 						<input type="text" id="firstName" name="firstName" placeholder="{{ .Params.first_name_placeholder }}" />
