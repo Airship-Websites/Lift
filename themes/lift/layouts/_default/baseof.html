@@ -1,7 +1,7 @@
-{{ $class_page := "" }}
-{{ with .Page.Params.class_page }}
-	{{ $class_page = print "page--" . }}
-{{ end }}
+{{- $class_page := "" -}}
+{{- with .Page.Params.class_page -}}
+	{{- $class_page = print "page--" . -}}
+{{- end -}}
 
 <!DOCTYPE html>
 <html lang="en">

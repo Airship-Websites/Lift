@@ -4,10 +4,9 @@ title: Services
 # PARAMS
 # Meta description
 description_meta: 
-# Header background image path
-header_image: 
-# Footer background image path
-footer_image: 
+cascade:
+  # Header background image path
+  header_image: 
 ---
 
 ## Ipsum Fusce Ultricies

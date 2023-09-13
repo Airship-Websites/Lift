@@ -79,7 +79,7 @@ $bg-light:  $c-light;
 $bg-medium: $c-medium;
 $bg-dark:   $c-dark;
 $bg-brand:  $c-brand;
-$bg-dimension: linear-gradient(0deg, $bg-medium, color( $bg-medium lightness( -10% )) 80%, $bg-white 80%);
+$bg-fraction: linear-gradient(0deg, $bg-medium, color( $bg-medium lightness( -10% )) 80%, $bg-white 80%);
 
 /* Background image overlay */
 $bg-overlay: color( $bg-brand a( 60% ) );
@@ -157,8 +157,8 @@ $fw-bold:    700;
 $fw-heading: $fw-bold;
 
 $lh:         1.65;
-$lh-large:   1.5;
 $lh-heading: 1.35;
+$lh-large:   1.5;
 
 $space-text:        1.5em;
 $space-heading:     0.4em;
@@ -169,7 +169,7 @@ $space-heading-top: calc( $space-heading * 2 );
 --------------------------------------------------------------*/
 
 $w-column:  100px;
-$gap:       2.5rem;
+$gap:       3rem;
 $maxw:      calc( 12 * ( $w-column + $gap ) - $gap );
 
 $h-masthead: 4.2rem;
