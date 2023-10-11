@@ -240,6 +240,7 @@ $c-nav-submenu: $c-nav-active;
 $bg-submenu:    $c-white;
 $bg-menu:       $c-white;
 $c-border-menu: color( $bg-menu lightness( -10% ) );
+$bg-nav-submenu-active: color( $c-brand saturation( 100% ) lightness( 92% ) );
 
 $ff-nav:         $ff;
 $fz-nav:         18px;
@@ -278,16 +279,16 @@ $z-bg-overlay:  10;
 --------------------------------------------------------------*/
 
 $small-phone:   400px;
-$_small-phone:  calc( $small-phone - 1px );
+$_small-phone:  calc( $small-phone - 0.02px );
 $phone:         560px;
-$_phone:        calc( $phone - 1px );
+$_phone:        calc( $phone - 0.02px );
 $tablet:        768px;
-$_tablet:       calc( $tablet - 1px );
+$_tablet:       calc( $tablet - 0.02px );
 $desktop:       992px;
-$_desktop:      calc( $desktop - 1px );
+$_desktop:      calc( $desktop - 0.02px );
 $large-desktop: 1200px;
 
 /* These values must match the BREAKPOINT values in nav.js */
 $bp-mobile: $tablet;
-$_bp-mobile: calc( $bp-mobile - 1px );
+$_bp-mobile: calc( $bp-mobile - 0.02px );
 $bp-mobile-height: 700px;

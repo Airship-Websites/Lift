@@ -1,4 +1,4 @@
-# Ignore files and folders named "private"
+# Files/folders named "private"
 private*
 
 # Ignore everything in the "themes" directory, except the themes you

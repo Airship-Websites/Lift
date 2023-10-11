@@ -1,77 +1,80 @@
-{{ $context := .context }}
-{{ $data := .data }}
-{{ $tag_filter := .tag_filter }}
-{{ $class := .class }}
-{{ $title := .title }}
+{{- $context := .context -}}
+{{- $data := .data -}}
+{{- $tag_filter := .tag_filter -}}
+{{- $class := .class -}}
+{{- $title := .title -}}
+{{- $no_header := .no_header -}}
 
-{{ with index $context.Site.Data $data }}
-	{{ $id := .id }}
-	{{ $class_entry := .class.entry }}
-	{{ $class_figure := .class.figure }}
+{{- with index $context.Site.Data $data -}}
+	{{- $id := .id -}}
+	{{- $class_entry := .class.entry -}}
+	{{- $class_figure := .class.figure -}}
 	<section class="section {{ $class }}">
 		<div class="wrap">
-			<header class="section__header">
-				<h2 class="section__title">{{ $title | default .title }}</h2>
-				{{ with .subtitle }}
-					<p class="section__subtitle">{{ . }}</p>
-				{{ end }}
-			</header>
+			{{- if not $no_header -}}
+				<header class="section__header">
+					<h2 class="section__title">{{ $title | default .title }}</h2>
+					{{- with .subtitle -}}
+						<p class="section__subtitle">{{ . }}</p>
+					{{- end -}}
+				</header>
+			{{- end -}}
 			<div class="section__content entries {{ .class.entries }}">
-				{{ range .entries }}
-					{{ if or (not $tag_filter) (in .tags $tag_filter) }}
-						{{ $link := .link }}
-						{{ $more_text := .more_text | default $context.Site.Params.more_text }}
+				{{- range .entries -}}
+					{{- if or (not $tag_filter) (in .tags $tag_filter) -}}
+						{{- $link := .link -}}
+						{{- $more_text := .more_text | default $context.Site.Params.more_text -}}
 						<article class="entry {{ $class_entry }}">
 							<figure class="entry__image {{ $class_figure }}">
-								{{ if $link }}
+								{{- if $link -}}
 									<a href="{{ absURL .link }}">
-								{{ end }}
+								{{- end -}}
 
 								{{/* Image */}}
 								{{- partial "image.html" ( dict "title" .title "path" .image ) -}}
 								
-								{{ if $link }}
+								{{- if $link -}}
 									</a>
-								{{ end }}
+								{{- end -}}
 							</figure>
 							<header class="entry__header">
 								<h3 class="entry__title">
-									{{ if $link }}
+									{{- if $link -}}
 										<a href="{{ absURL .link }}">
-									{{ end }}
-									{{ .title }}
-									{{ if $link }}
+									{{- end -}}
+									{{- .title -}}
+									{{- if $link -}}
 										</a>
-									{{ end }}
+									{{- end -}}
 								</h3>
-								{{ if .meta }}
+								{{- if .meta -}}
 									<p class="entry__meta">{{ .meta }}</p>
-								{{ end }}
+								{{- end -}}
 							</header>
 							<div class="entry__content">
 								<p>
 									{{/* Team entry contact info */}}
-									{{ if eq $id "team" }}
+									{{- if eq $id "lawyers" -}}
 
 										{{/* Contact */}}
 										{{- partial "contact.html" . -}}
 
-									{{ end }}
-									{{ .text }} 
-									{{ if $link }}
+									{{- end -}}
+									{{- .text -}}
+									{{- if $link -}}
 										<a href="{{ absURL .link }}" class="entry__link">{{ $more_text }}</a>
-									{{ end }}
+									{{- end -}}
 								</p>
 							</div><!-- .entry__content -->
 						</article>
-					{{ end }}
-				{{ end }}
+					{{- end -}}
+				{{- end -}}
 			</div>
-			{{ if .link }}
+			{{- if .link -}}
 				<footer class="section__footer">
 					<a class="button" href="{{ absURL .link.url }}">{{ .link.text }}</a>
 				</footer>
-			{{ end }}
+			{{- end -}}
 		</div><!-- .wrap -->
 	</section>
-{{ end }}
+{{- end -}}

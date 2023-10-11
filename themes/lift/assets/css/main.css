@@ -1048,7 +1048,7 @@ ul.links {
 			&:hover,
 			&:focus,
 			&:active {
-				background: color( $c-brand a(0.05) );
+				background: $bg-nav-submenu-active;
 			}			
 		}
 
@@ -1259,8 +1259,8 @@ ul.links {
 		@include grid(4);
 	}
 
-	/* 3-across centered */
-	&--3-center {
+	/* Viewport-dependent columns */
+	&--flex {
 		@include flex-entries;
 	}
 }
@@ -1555,7 +1555,7 @@ ul.links {
 ----------------------------------*/
 
 /* CSS Grid */
-.section--aside {
+.section--has-aside {
 	> .wrap {
 		@include grid( 12, $desktop );
 		@include grid-rows-collapse;

@@ -75,6 +75,10 @@ export function showHideMasthead() {
 
 				// Downward scroll
 				if ( self.direction === 1 && updateCounter > UPDATE_MIN ) {
+					// Don't hide masthead if menu is currently open
+					if (document.documentElement.classList.contains('nav--on')) {
+						return;
+					}
 					// Hide masthead
 					document.documentElement.classList.add( CLASS_OFF );
 				// Upward scroll
