@@ -1,19 +1,19 @@
-{{ $context := .context }}
-{{ $menu_id := .menu_id }}
+{{- $context := .context -}}
+{{- $menu_id := .menu_id -}}
 
-{{ $type := "" }}
-{{ $isMain := false }}
+{{- $type := "" -}}
+{{- $isMain := false -}}
 
-{{ if eq $menu_id "main" }}
-	{{ $isMain = true }}
-	{{ $type = "nav" }}
-{{ else if eq $menu_id "footer" }}
-	{{ $type = "nav-footer" }}
-{{ end }}
+{{- if eq $menu_id "main" -}}
+	{{- $isMain = true -}}
+	{{- $type = "nav" -}}
+{{- else if eq $menu_id "footer" -}}
+	{{- $type = "nav-footer" -}}
+{{- end -}}
 
 <nav class="{{ $type }}" role="navigation">
 
-	{{ if $isMain }}
+	{{- if $isMain -}}
 		<button class="nav__toggle js-nav__toggle" title="Menu" aria-controls="nav" aria-expanded="false"
 			data-target="js-nav">
 
@@ -24,38 +24,38 @@
 				Menu
 			</span>
 		</button>
-	{{ end }}
+	{{- end -}}
 
 	<ul class="{{ $type }}__menu {{ if $isMain }}js-nav__menu{{ end }}">
 
-		{{ range index site.Menus $menu_id }}
-			{{ $current := or ($context.IsMenuCurrent .Menu .) ($context.HasMenuCurrent .Menu .) }}
-			{{ $class := printf "%s__item" $type }}
-			{{ if .Params.class }}
-				{{ $class = printf "%s %s__item--%s" $class $type .Params.class }}
-			{{ end }}
-			{{ if $current }}
-				{{ $class = printf "%s %s__item--current" $class $type }}
-			{{ end }}
+		{{- range index site.Menus $menu_id -}}
+			{{- $current := or ($context.IsMenuCurrent .Menu .) ($context.HasMenuCurrent .Menu .) -}}
+			{{- $class := printf "%s__item" $type -}}
+			{{- if .Params.class -}}
+				{{- $class = printf "%s %s__item--%s" $class $type .Params.class -}}
+			{{- end -}}
+			{{- if $current -}}
+				{{- $class = printf "%s %s__item--current" $class $type -}}
+			{{- end -}}
 			<li class="{{ $class }}">
 				<a href="{{ absURL .URL }}">
-					{{ .Name }}
+					{{- .Name -}}
 				</a>
 
-				{{ if .Children }}
+				{{- if .Children -}}
 					<ul class="{{ $type }}__sub">
-						{{ range .Children }}
+						{{- range .Children -}}
 							<li class="{{ $type }}__item">
 								<a href="{{ absURL .URL }}">
-									{{ .Name }}
+									{{- .Name -}}
 								</a>
 							</li>
-						{{ end }}
+						{{- end -}}
 					</ul>
-				{{ end }}			
+				{{- end -}}			
 
 			</li>
-		{{ end }}
+		{{- end -}}
 
 	</ul>
 </nav>

@@ -10,14 +10,14 @@
 	</div><!-- .wrap -->
 </section>
 
-{{ $header_bg_url := .Page.Params.header_image | default .Site.Params.header_image | absURL }}
+{{- $image_url := .Page.Params.header_image | default .Site.Params.header_image | absURL -}}
 <style type="text/css">
 	.header {
-		background-image: url({{ $header_bg_url }});
+		background-image: url({{ $image_url }});
 	}
 	@media (min-width: 768px) {
 		.header {
-			background-image: url({{ $header_bg_url }});
+			background-image: url({{ $image_url }});
 		}
 	}
 </style>
@@ -26,15 +26,15 @@
 	<div class="wrap">
 
 		{{/*  Home header  */}}
-		{{ if .IsHome }}
+		{{- if .IsHome -}}
 			<h1 class="title">{{ .Title }}</h1>
 			<p class="subtitle">{{ .Params.subtitle }}</p>
 			<a class="button button--big" href="{{ absURL .Params.cta.url }}">{{ .Params.cta.text }}</a>
 
 		{{/*  Other pages header  */}}
-		{{ else }}
+		{{- else -}}
 		<h1 class="title">{{ .Title }}</h1>
-		{{ end }}
+		{{- end -}}
 		
 	</div><!-- .wrap -->
 </header>

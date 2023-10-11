@@ -12,3 +12,12 @@ email: hello@airshipwebsites.com
 social:
   facebook: https://www.facebook.com/
   twitter: https://twitter.com/
+twitter_handle: "@airshipwebsites"
+
+# Structured data
+street: 123 Street St
+city: Anytown
+state: OR
+zip: 45678
+hours: Mo,Tu,We,Th,Fr 09:00-17:00
+area: Anytown and surrounding areas

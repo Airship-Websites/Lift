@@ -4,7 +4,7 @@ link:
   text: More Services
   url: /services
 class:
-  entries: entries--3
+  entries: entries--flex
   entry: entry--card
   figure: 
 entries:

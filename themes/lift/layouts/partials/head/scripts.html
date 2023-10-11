@@ -3,14 +3,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 {{/* Scripts */}}
-{{ $js := resources.Get "js/scripts.js" | js.Build }}
+{{- $js := resources.Get "js/scripts.js" | js.Build -}}
 <script src="{{ $js.RelPermalink }}" type="module" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
 
 {{/* Development */}}
-{{ if .Site.IsServer }}
+{{- if .Site.IsServer -}}
 	{{ "<!-- Google Tag Manager is turned off in development -->" | safeHTML }}
 {{/* Production */}}
-{{ else }}
+{{- else -}}
 	{{/* Google Tag Manager */}}
 	<script>(function(w, d, s, l, i) {
 	w[l] = w[l] || [];
@@ -25,4 +25,4 @@
 	f.parentNode.insertBefore(j, f);
 	})(window, document, 'script', 'dataLayer', 'GTM-XXXXXXXX');</script>
 
-{{ end }}
+{{- end -}}

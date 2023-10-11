@@ -9,8 +9,6 @@ description_meta:
 class_page: contact
 # Header background image path
 header_image: 
-# Footer background image path
-footer_image: 
 
 first_name_label: First Name*
 first_name_placeholder: First name

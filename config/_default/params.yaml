@@ -11,7 +11,7 @@ more_text: More
 header_image: images/header.jpg
 
 # Footer background image path
-footer_image: images/footer.jpg
+footer_image: 
 
 # Call-to-action background image path
 cta_image: images/cta.jpg  

@@ -6,8 +6,6 @@ title: Our Team
 description_meta: 
 # Header background image path
 header_image: 
-# Footer background image path
-footer_image: 
 ---
 
 ## Ipsum Fusce Ultricies

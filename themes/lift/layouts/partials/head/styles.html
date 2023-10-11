@@ -4,19 +4,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-{{ $variables := resources.Get "css/variables.css" }}
-{{ $mixins := resources.Get "css/mixins.css" }}
-{{ $normalize := resources.Get "css/normalize.css" }}
-{{ $main := resources.Get "css/main.css" }}
+{{- $variables := resources.Get "css/variables.css" -}}
+{{- $mixins := resources.Get "css/mixins.css" -}}
+{{- $normalize := resources.Get "css/normalize.css" -}}
+{{- $main := resources.Get "css/main.css" -}}
 
-{{ $css := slice $variables $mixins $normalize $main | resources.Concat "css/styles.css" | resources.Fingerprint }}
+{{- $css := slice $variables $mixins $normalize $main | resources.Concat "css/styles.css" | resources.Fingerprint -}}
 
 {{/* Development */}}
-{{ if .Site.IsServer }}
-	{{ $css = $css | postCSS }}
+{{- if .Site.IsServer -}}
+	{{- $css = $css | postCSS -}}
 {{/* Production */}}
-{{ else }}
-	{{ $css = $css | postCSS | minify }}
-{{ end }}
+{{- else -}}
+	{{- $css = $css | postCSS | minify -}}
+{{- end -}}
 
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">

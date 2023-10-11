@@ -1,0 +1,31 @@
+{{- $company := .Site.Data.company -}}
+{{- $name := $company.name -}}
+{{- $logo := $company.logo -}}
+{{- $phone := $company.phone -}}
+{{- $email := $company.email -}}
+{{- $street := $company.street -}}
+{{- $city := $company.city -}}
+{{- $state := $company.state -}}
+{{- $zip := $company.zip -}}
+{{- $hours := $company.hours -}}
+{{- $area := $company.area -}}
+
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org", 
+		"@type": "LegalService",
+		"name": "{{ $name }}",
+		"image": "{{ absURL $logo }}",
+		"telephone": "{{ $phone }}",
+		"email": "{{ $email }}",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "{{ $street }}",
+			"addressLocality": "{{ $city }}",
+			"addressRegion": "{{ $state }}",
+			"postalCode": "{{ $zip }}",
+		},
+		"openingHours": "{{ $hours }}",
+		"serviceArea": "{{ $area }}"
+	}
+</script>

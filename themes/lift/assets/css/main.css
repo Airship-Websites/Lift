@@ -1048,7 +1048,7 @@ ul.links {
 			&:hover,
 			&:focus,
 			&:active {
-				background: color( $c-brand a(0.05) );
+				background: $bg-nav-submenu-active;
 			}			
 		}
 
@@ -1091,12 +1091,14 @@ ul.links {
 	padding-top: calc($h-masthead + $space-section );
 	text-align: center;
 
+	/* Hero header */
 	&--hero {
 		@include center-child;
 		min-height: 36rem;
 		padding-bottom: calc($space-section);
 		padding-top: calc($h-masthead + $space-section + 2rem);
 		
+		/* Overlay */
 		&::after {
 			background: $bg-overlay;
 		}		
@@ -1107,20 +1109,21 @@ ul.links {
 
 		.title {
 			font-size: calc($fz-h1 + 0.2rem);
+		}
+
+		.button {
+			@include full-width-phone;
+			margin-top: $space-block;
 		}		
 
 		@media (min-width: $tablet ) {
 			text-align: left;
 			
-			&::after {
+		/* Overlay */
+		&::after {
 				background: $bg-overlay-reveal;
 			}				
 		}		
-	}
-
-	.button {
-		@include full-width-phone;
-		margin-top: $space-block;
 	}
 }
 
@@ -1256,8 +1259,8 @@ ul.links {
 		@include grid(4);
 	}
 
-	/* 3-across centered */
-	&--3-center {
+	/* Viewport-dependent columns */
+	&--flex {
 		@include flex-entries;
 	}
 }
@@ -1552,7 +1555,7 @@ ul.links {
 ----------------------------------*/
 
 /* CSS Grid */
-.section--aside {
+.section--has-aside {
 	> .wrap {
 		@include grid( 12, $desktop );
 		@include grid-rows-collapse;
@@ -1920,9 +1923,9 @@ ul.links {
 		background-color: $bg-brand;
 	}
 
-	&--dimension {
+	&--fraction {
 		@media (min-width: $tablet) {
-			background-image: $bg-dimension;
+			background-image: $bg-fraction;
 		}
 	}	
 }
