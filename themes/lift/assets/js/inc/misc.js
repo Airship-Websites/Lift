@@ -30,14 +30,15 @@ export const toggleFaqs = () => {
 	});
 };
 
+
 /**
- * Ken Burns effect on image when it's scrolled into view.
+ * Ken Burns effect on background image when it's scrolled into view.
  */
 export const kenBurnsEffect = (options = {}) => {
 	const {
 		// Settings
 		SELECTOR = '.js-kbe', // Element with background image
-		ZOOMED_OUT = '110%', // Initial zoom out
+		SCALE = 1.1, // Initial zoom out
 		DURATION = 9, // Duration of animation
 	} = options;
 
@@ -48,24 +49,52 @@ export const kenBurnsEffect = (options = {}) => {
 		return;
 	}
 
-	let mm = gsap.matchMedia();
+	Array.from(elements).forEach(element => {
+		const
+			backgroundImageCSS = getComputedStyle(element).backgroundImage,
+			backgroundImage = backgroundImageCSS.replace(/url\(['"]?(.*?)['"]?\)/i, '$1'),
+			newContainer = document.createElement('div'),
+			newImage = document.createElement('img');
 
-	elements.forEach(element => {
-		mm.add( '(min-width: 992px)', () => {
+		newImage.src = backgroundImage;
 
-			gsap.fromTo( element, {
-				backgroundSize: ZOOMED_OUT,
-			}, {
-				backgroundSize: '100%',
-				duration: DURATION,
-				scrollTrigger: {
-					trigger: element,
-					start: 'top bottom',
-					end: 'bottom top',
-					toggleActions: 'play',
-				},
-			} );
-		} );
+		Object.assign(element.style, {
+			position: 'relative',
+			zIndex: 1,
+		});
+
+		Object.assign(newContainer.style, {
+			position: 'absolute',
+			top: 0,
+			left: 0,
+			width: '100%',
+			height: '100%',
+			zIndex: -1,
+			overflow: 'hidden',
+		});
+
+		Object.assign(newImage.style, {
+			objectFit: 'cover',
+			height: '100%',
+			width: '100%',
+		});
+
+		// Remove the background image from the target element
+		element.style.backgroundImage = 'none';
+
+		// Append the background container to the target element
+		element.append(newContainer);
+		newContainer.append(newImage);
+
+		// Animate the background container
+		gsap.from(newImage, {
+			duration: DURATION,
+			scale: SCALE,
+			scrollTrigger: {
+				trigger: newImage,
+				start: 'top bottom',
+			},
+		});
 	});
 };
 
