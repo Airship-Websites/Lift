@@ -26,13 +26,13 @@
 {{ $class_bg := .class_bg | default "bg--dark" }}
 
 {{ with $cta }}
-<section class="section js-kbe {{ $class_layout }} {{ $class_bg }}">
+<section class="section {{ $class_layout }} {{ $class_bg }}">
 	<div class="wrap">
 		<header class="section__header">
 			<h2 class="section__title">{{ .title }}</h2>
-				{{ with .subtitle }}
-					<p class="section__subtitle">{{ . }}</p>
-				{{ end }}			
+			{{ with .subtitle }}
+				<p class="section__subtitle">{{ . }}</p>
+			{{ end }}			
 		</header>
 		<footer class="section__footer">
 			<a class="button button--big" href="{{ absURL .link.url }}">{{ .link.text }}</a>

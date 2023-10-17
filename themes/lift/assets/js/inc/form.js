@@ -14,13 +14,17 @@ export default function handleForm() {
 		return;
 	}
 
+	const submitButton = document.querySelector('#submit');
+	const scriptURL = 'https://script.google.com/macros/s/AKfycbwaqC2ctS3nu6u4JTfRU3szpyxqbLJOv5qtM2SsmF8A7--W90ncUWyd7Jrikdt2zOCgEg/exec';
+
 	form.addEventListener('submit', function (event) {
 		event.preventDefault();
-
+		console.log(scriptURL);
 		if (validateForm()) {
+			submitButton.disabled = true;
 			const formData = new FormData(form);
 
-			fetch('/', {
+			fetch(scriptURL, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: new URLSearchParams(formData).toString(),
@@ -29,8 +33,12 @@ export default function handleForm() {
 					// Scroll to top, hide form and show confirmation message
 					window.scrollTo({ top: 0 });
 					document.documentElement.classList.add( 'form--sent' );
+					submitButton.disabled = false;
 				})
-				.catch((error) => alert(error));
+				.catch((error) => {
+					alert(error);
+					submitButton.disabled = false;
+				});
 		}
 	});
 
@@ -41,6 +49,7 @@ export default function handleForm() {
 		const lastNameInput = document.getElementById('lastName');
 		const emailInput = document.getElementById('email');
 		const phoneInput = document.getElementById('phone');
+		const honeypotInput = document.getElementById('voightKampff');
 
 		const firstNameError = document.getElementById('firstNameError');
 		const lastNameError = document.getElementById('lastNameError');
@@ -75,6 +84,11 @@ export default function handleForm() {
 				phoneError.textContent = 'Please enter a valid phone';
 				isValid = false;
 			}
+		}
+
+		if (honeypotInput.value.trim() !== '') {
+			// Dummy field filled out, indicating it's likely a bot
+			isValid = false;
 		}
 
 		return isValid;
