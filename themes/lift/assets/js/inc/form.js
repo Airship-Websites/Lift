@@ -15,7 +15,7 @@ export default function handleForm() {
 	}
 
 	const submitButton = document.querySelector('#submit');
-	const scriptURL = 'https://script.google.com/macros/s/AKfycbwaqC2ctS3nu6u4JTfRU3szpyxqbLJOv5qtM2SsmF8A7--W90ncUWyd7Jrikdt2zOCgEg/exec';
+	const scriptURL = 'https://script.google.com/macros/s/AKfycbzHPzZYByzJeCP5xH8hP5hHxKM5VQgW4QwHtIsfzpGAnycWWLUuZg7Q-zknPDrz97_O/exec';
 
 	form.addEventListener('submit', function (event) {
 		event.preventDefault();
@@ -26,8 +26,7 @@ export default function handleForm() {
 
 			fetch(scriptURL, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: new URLSearchParams(formData).toString(),
+				body: formData,
 			})
 				.then(() => {
 					// Scroll to top, hide form and show confirmation message
@@ -36,7 +35,7 @@ export default function handleForm() {
 					submitButton.disabled = false;
 				})
 				.catch((error) => {
-					alert(error);
+					alert('error');
 					submitButton.disabled = false;
 				});
 		}
