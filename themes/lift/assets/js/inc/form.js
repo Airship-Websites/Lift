@@ -15,29 +15,13 @@ export default function handleForm() {
 	}
 
 	const submitButton = document.querySelector('#submit');
-	const scriptURL = 'https://script.google.com/macros/s/AKfycbzHPzZYByzJeCP5xH8hP5hHxKM5VQgW4QwHtIsfzpGAnycWWLUuZg7Q-zknPDrz97_O/exec';
 
 	form.addEventListener('submit', function (event) {
 		event.preventDefault();
-		console.log(scriptURL);
+
 		if (validateForm()) {
 			submitButton.disabled = true;
-			const formData = new FormData(form);
-
-			fetch(scriptURL, {
-				method: 'POST',
-				body: formData,
-			})
-				.then(() => {
-					// Scroll to top, hide form and show confirmation message
-					window.scrollTo({ top: 0 });
-					document.documentElement.classList.add( 'form--sent' );
-					submitButton.disabled = false;
-				})
-				.catch((error) => {
-					alert('error');
-					submitButton.disabled = false;
-				});
+			sendDataToGoogleSheet(form);
 		}
 	});
 
@@ -105,11 +89,24 @@ export default function handleForm() {
 		return phoneRegex.test(phoneNumber);
 	}
 
-	function sendToHubSpot(data) {
-		console.log(data);
-		// Implement your code to send data to HubSpot CRM
-		// Example: You can use fetch API or an AJAX request to send data to your server-side code that interacts with HubSpot CRM API.
-		// Make sure you have the necessary authentication and endpoint setup to send data to HubSpot CRM.
-	}
+	function sendDataToGoogleSheet(form) {
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbxsH39rYPZBpbORmz9Czx70TIL6ForE0KgzqaLP4FZyEC94CpdO-qN0u-SsGlaCXzfrwA/exec';
+		const formData = new FormData(form);
 
+		fetch(scriptURL, {
+			method: 'POST',
+			body: formData,
+		})
+			.then(() => {
+				// Scroll to top, hide form and show confirmation message
+				window.scrollTo({ top: 0 });
+				document.documentElement.classList.add('form--sent');
+			})
+			.catch((error) => {
+				alert(error);
+			})
+			.finally(() => {
+				submitButton.disabled = false;
+			});
+	}
 }
