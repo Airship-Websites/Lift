@@ -4,8 +4,7 @@
 			<div class="section__content form__initial">
 				{{ .Content }}
 				<form class="form form--contact js-form" name="contact">
-					<input type="hidden" name="subject" data-remove-prefix
-					value="New inquiry from website" />
+					<input type="hidden" name="formDomainName" value="airshipwebsites.com" />
 					<div class="form__field hide">
 						<label for="voightKampff">Leave this field blank if you're human</label>
 						<input type="text" id="voightKampff" name="voightKampff" placeholder="voightKampff" />
@@ -35,7 +34,7 @@
 						<textarea id="message" name="message" placeholder="{{ .Params.message_placeholder }}"></textarea>
 						<span class="form__error" id="messageError"></span>
 					</div>
-					<input id="submit" type="submit" value="Submit" />
+					<input id="submit" type="submit" value="Send" />
 				</form>
 			</div>
 			<div class="section__content form__confirmation">

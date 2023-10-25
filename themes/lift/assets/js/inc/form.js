@@ -90,7 +90,7 @@ export default function handleForm() {
 	}
 
 	function sendDataToGoogleSheet(form) {
-		const scriptURL = 'https://script.google.com/macros/s/AKfycbxsH39rYPZBpbORmz9Czx70TIL6ForE0KgzqaLP4FZyEC94CpdO-qN0u-SsGlaCXzfrwA/exec';
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbxlHd-89RqLy5lm7Q-0BISFLpHDL2MafNq0p_35gHIejlHsT8Ka3w3fsmZhWA-tPwsPQw/exec';
 		const formData = new FormData(form);
 
 		fetch(scriptURL, {
